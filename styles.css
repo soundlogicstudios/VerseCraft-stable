@@ -1,0 +1,287 @@
+/* ============================================================
+   VerseCraft Stable UI Shell (Mobile-first / iOS-safe)
+   FIX: Logo size constraint (no blowout)
+   ============================================================ */
+
+:root{
+  --bg0:#061320;
+  --bg1:#0b2237;
+  --bg2:#0f2f4d;
+
+  --text:#eaf1ff;
+  --muted:rgba(234,241,255,.70);
+
+  --goldA: rgba(242,208,138,.28);
+  --goldB: rgba(242,208,138,.14);
+  --line: rgba(255,255,255,.12);
+  --line2: rgba(255,255,255,.08);
+
+  --shadow: rgba(0,0,0,.55);
+
+  --radiusXL: 28px;
+  --radiusLG: 22px;
+  --radiusMD: 16px;
+
+  --maxw: 560px;
+
+  --base: 16px;
+  --btnFont: 14px;
+  --titleFont: 18px;
+  --bodyFont: 17px;
+}
+
+html{
+  font-size: var(--base);
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body{
+  margin: 0;
+  height: 100%;
+  background:
+    radial-gradient(1200px 900px at 50% 0%, #163f6c 0%, var(--bg0) 60%, #03070c 100%);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+#app{
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.vc-wrap{
+  width: min(var(--maxw), calc(100vw - 22px));
+  height: 100%;
+  margin: 0 auto;
+  padding: 14px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== Panel ===== */
+.vc-panel{
+  position: relative;
+  border-radius: var(--radiusXL);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(1000px 500px at 50% -10%, rgba(120,180,255,.14), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.20)),
+    linear-gradient(180deg, rgba(11,29,45,.92), rgba(7,20,34,.92));
+  box-shadow: 0 18px 52px var(--shadow);
+  overflow: hidden;
+}
+
+.vc-panel::before{
+  content:"";
+  position:absolute;
+  inset: 10px;
+  border-radius: calc(var(--radiusXL) - 10px);
+  border: 1px solid rgba(242,208,138,.16);
+  pointer-events:none;
+}
+
+.vc-panelPad{ padding: 14px; }
+
+/* ===== Scroll ===== */
+.vc-scroll{
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 18px;
+}
+
+/* ============================================================
+   ✅ HOME LOGO — FIXED SCALE
+   ============================================================ */
+
+.vc-homeTop{
+  border-radius: var(--radiusLG);
+  border: 1px solid var(--line2);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.18));
+  overflow: hidden;
+}
+
+.vc-homeTop img{
+  display: block;
+  width: 100%;
+  max-height: 34dvh;   /* 🔒 hard cap */
+  height: auto;
+  object-fit: contain; /* 🔒 preserves proportions */
+  margin: 0 auto;
+}
+
+/* Tagline */
+.vc-tagline{
+  text-align:center;
+  margin: 10px 0 12px;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+/* ===== Buttons ===== */
+.vc-btn{
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(242,208,138,.22);
+  background:
+    radial-gradient(140px 64px at 14% 50%, rgba(255,255,255,.16), transparent 70%),
+    radial-gradient(140px 64px at 86% 50%, rgba(255,255,255,.10), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.20)),
+    linear-gradient(180deg, rgba(13,38,58,.94), rgba(8,20,34,.94));
+  color: var(--text);
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: var(--btnFont);
+  box-shadow: 0 10px 22px rgba(0,0,0,.38);
+}
+
+.vc-btn + .vc-btn{ margin-top: 12px; }
+
+/* ===== HUD ===== */
+.vc-hud{
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.vc-hudInner{
+  border-radius: var(--radiusXL);
+  border: 1px solid var(--line2);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22)),
+    linear-gradient(180deg, rgba(9,28,44,.92), rgba(6,15,26,.92));
+  box-shadow: 0 18px 42px rgba(0,0,0,.38);
+  padding: 14px;
+}
+
+.vc-hudTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.vc-hudTitle{
+  margin: 0;
+  font-size: var(--titleFont);
+  font-weight: 900;
+}
+
+.vc-minBtn{
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(234,241,255,.92);
+  padding: 8px 12px;
+  font-weight: 800;
+}
+
+/* ===== Bars ===== */
+.vc-bars{
+  display:grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.vc-barRow{
+  display:grid;
+  grid-template-columns: 44px 1fr 86px;
+  gap: 10px;
+  align-items:center;
+}
+
+.vc-bar{
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.30);
+  border: 1px solid rgba(255,255,255,.10);
+  overflow:hidden;
+}
+
+.vc-barFill{
+  height:100%;
+  width: 50%;
+  background: linear-gradient(90deg, #ff7878, #f2d08a);
+}
+
+.vc-barFill--xp{
+  background: linear-gradient(90deg, rgba(120,220,255,.8), rgba(120,220,255,.25));
+}
+
+/* ===== HUD Buttons ===== */
+.vc-hudBtns{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.vc-hudBtns2{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.vc-hudBtns .vc-btn,
+.vc-hudBtns2 .vc-btn{
+  padding: 12px;
+  font-size: 12px;
+  letter-spacing: .12em;
+}
+
+/* ✅ Minimize hides ONLY menu buttons */
+body.hud-min .vc-hudBtns,
+body.hud-min .vc-hudBtns2{
+  display:none !important;
+}
+
+/* ===== Content ===== */
+.vc-content{ padding: 12px; }
+
+.vc-storyText{
+  border-radius: var(--radiusXL);
+  border: 1px solid var(--line2);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22)),
+    linear-gradient(180deg, rgba(7,18,30,.92), rgba(5,12,22,.92));
+  box-shadow: 0 14px 34px rgba(0,0,0,.32);
+  padding: 18px;
+  font-size: var(--bodyFont);
+  line-height: 1.55;
+}
+
+.vc-choices{
+  margin-top: 12px;
+  display:grid;
+  gap: 12px;
+}
+
+.vc-choiceBtn{
+  padding: 14px 16px;
+  border-radius: var(--radiusLG);
+  border: 1px solid rgba(242,208,138,.20);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22)),
+    linear-gradient(180deg, rgba(10,30,46,.92), rgba(6,14,24,.92));
+  color: rgba(234,241,255,.92);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 380px){
+  :root{
+    --btnFont:13px;
+    --titleFont:17px;
+    --bodyFont:16px;
+  }
+  .vc-wrap{ width: calc(100vw - 18px); }
+}
