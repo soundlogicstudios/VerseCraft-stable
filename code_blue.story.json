@@ -1,19 +1,29 @@
 {
+  "storyId": "code_blue",
   "title": "Code Blue",
   "subtitle": "A Hospital Romance Demo",
-  "start": "start",
-  "sections": {
-    "start": {
-      "text": "The fluorescent lights hum. Your pager vibrates. Someone says your name like it matters.",
+  "startSectionId": "start",
+  "save": {
+    "defaults": {
+      "hp": 10,
+      "maxHp": 10,
+      "wealth": { "W": 1, "E": 1, "A": 1, "L": 1, "T": 1, "H": 1 },
+      "equipped": { "weapon": "Sharp Tongue", "armor": "Scrubs", "special": "Pager" },
+      "inventory": {
+        "consumables": [{ "title": "Coffee", "qty": 1, "effects": { "timingDelta": 1 } }],
+        "items": [{ "title": "Pager", "type": "special" }]
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "start",
+      "text": ["The fluorescent lights hum. Your pager vibrates. Someone says your name like it matters."],
       "choices": [
-        { "text": "Continue", "to": "next" }
-      ]
-    },
-    "next": {
-      "text": "A patient chart waits. A glance across the hall lingers a second too long.\n\nThis is where we’ll build the full 100+ section demo next.",
-      "choices": [
-        { "text": "Return To Main Menu", "to": "start" }
+        { "text": "Open Character Sheet", "to": "CHARACTER" },
+        { "text": "Open Inventory", "to": "INVENTORY" },
+        { "text": "Return To Menu", "to": "MAIN_MENU" }
       ]
     }
-  }
+  ]
 }

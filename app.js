@@ -1,629 +1,898 @@
-/* VerseCraft — clean rebuild (single-file vanilla JS)
-   - Home menu + story picker
-   - In-game HUD sticky + minimize
-   - Character + Inventory modals
-   - Consumables (Use) and equipment (Equip) with values
-   - HP clamp rule built-in
-*/
+/* ============================================================
+   VerseCraft MVP Shell (Full file replacement)
+   - Home: logo + Tap To Start / Load New Story / Continue Story
+   - Story Picker modal (Option C)
+   - In-game: fixed HUD + minimize + content scroll
+   - Character + Inventory modals (populated)
+   - Item use clamps at 0, equips supported
+   - Save/Load (single slot) localStorage
+   - NO Rep / NO Timing
+   ============================================================ */
 
-const APP = document.getElementById("app");
-
-const STORAGE_KEY = "versecraft_save_v1";
-
-const DEFAULT_PLAYER = () => ({
-  hp: 10,
-  maxHp: 10,
-  xp: 0,
-  xpToLevel: 100,
-  level: 1,
-
-  // WEALTH stats default
-  stats: { W: 1, E: 1, A: 1, L: 1, T: 1, H: 1 },
-
-  equipped: {
-    weapon: "Rusty Dagger",
-    armor: "Leather Jerkin",
-    special: "Candle"
-  },
-
-  // inventory items are capitalized, no underscores
-  inventory: [
-    { name: "Bandage", category: "Consumables", qty: 1, value: 15, heal: 3 },
-    { name: "Rusty Dagger", category: "Weapons", qty: 1, value: 25, slot: "weapon" },
-    { name: "Leather Jerkin", category: "Armor", qty: 1, value: 30, slot: "armor" },
-    { name: "Candle", category: "Special", qty: 1, value: 10, slot: "special" }
-  ]
-});
-
-let storiesIndex = null;
-let storyData = null;
-
-let state = {
-  screen: "home", // home | game
-  currentStoryId: null,
-  currentSectionId: null,
-  hudCollapsed: false,
-  player: DEFAULT_PLAYER()
+const LS = {
+  SAVE: "versecraft_save_v1",
+  LAST_STORY: "versecraft_last_story_id",
 };
 
-/* -------------------- Utilities -------------------- */
-function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+const DEFAULT_PLAYER = () => ({
+  hp: { cur: 10, max: 10 },
+  xp: { cur: 0, max: 100 },
+  lvl: 1,
+  wealth: { W: 1, E: 1, A: 1, L: 1, T: 1, H: 1 }, // arrange WEALTH; H is stat tile, HP is separate resource
+  flags: {},
+  inv: {
+    consumables: [
+      { id: "bandage", name: "Bandage", qty: 1, value: 15, use: { type: "heal", amount: 3 } },
+    ],
+    items: [
+      { id: "candle", name: "Candle", qty: 1, value: 10, use: { type: "story", tag: "CandleMoment" } },
+    ],
+    weapons: [
+      { id: "rusty_dagger", name: "Rusty Dagger", qty: 1, value: 25, equipSlot: "weapon" },
+    ],
+    armor: [
+      { id: "leather_jerkin", name: "Leather Jerkin", qty: 1, value: 30, equipSlot: "armor" },
+    ],
+    special: [
+      { id: "candle_token", name: "Candle", qty: 1, value: 10, equipSlot: "special" },
+    ],
+  },
+  equip: {
+    weapon: "rusty_dagger",
+    armor: "leather_jerkin",
+    special: "candle_token",
+  },
+});
 
-function safeJsonParse(s){
-  try { return JSON.parse(s); } catch { return null; }
+const state = {
+  mode: "boot", // boot | home | game
+  storiesIndex: null, // stories.json
+  storyMetaById: new Map(),
+  story: null, // loaded story JSON
+  storyId: null,
+  sectionId: null,
+
+  player: DEFAULT_PLAYER(),
+
+  ui: {
+    modal: null, // {type: 'picker'|'character'|'inventory'|'load'|'save'|'dialog', ...}
+    invTab: "consumables", // consumables | items | weapons | armor | special
+  },
+};
+
+function $(sel){ return document.querySelector(sel); }
+function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
+function safeTitleCaseName(name){
+  // enforce your convention: capitalized, no underscores in display
+  if(!name) return "";
+  return String(name).replaceAll("_", " ");
 }
 
-function showAlert(msg){
-  // basic modal alert — iOS friendly
-  window.alert(msg);
+function setBodyHudMin(isMin){
+  document.body.classList.toggle("hud-min", !!isMin);
 }
 
-function saveToLocal(){
-  const payload = {
-    currentStoryId: state.currentStoryId,
-    currentSectionId: state.currentSectionId,
-    hudCollapsed: state.hudCollapsed,
-    player: state.player
-  };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-}
-
-function loadFromLocal(){
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if(!raw) return null;
-  const parsed = safeJsonParse(raw);
-  if(!parsed) return null;
-  return parsed;
-}
-
-function resetSave(){
-  localStorage.removeItem(STORAGE_KEY);
-}
-
-/* -------------------- Data Loading -------------------- */
-async function fetchJson(path){
-  const res = await fetch(path, { cache: "no-cache" });
-  if(!res.ok) throw new Error(`HTTP ${res.status} for ${path}`);
-  return await res.json();
-}
-
-async function ensureStoriesIndex(){
-  if(storiesIndex) return storiesIndex;
-  storiesIndex = await fetchJson("stories.json");
-  return storiesIndex;
-}
-
-async function loadStoryById(storyId){
-  const idx = await ensureStoriesIndex();
-  const entry = idx.stories.find(s => s.id === storyId);
-  if(!entry) throw new Error(`Story not found in stories.json: ${storyId}`);
-  storyData = await fetchJson(entry.file);
-  state.currentStoryId = storyId;
-  state.currentSectionId = storyData.start || "start";
-  return storyData;
-}
-
-/* -------------------- Inventory Logic -------------------- */
-function findInvItem(name){
-  return state.player.inventory.find(i => i.name === name) || null;
-}
-
-function decItem(name, amt=1){
-  const it = findInvItem(name);
-  if(!it) return false;
-  it.qty = (it.qty || 0) - amt;
-  if(it.qty <= 0){
-    state.player.inventory = state.player.inventory.filter(x => x.name !== name);
-  }
-  return true;
-}
-
-function equipItem(name){
-  const it = findInvItem(name);
-  if(!it || !it.slot) return false;
-  state.player.equipped[it.slot] = it.name;
-  return true;
-}
-
-function useConsumable(name){
-  const it = findInvItem(name);
-  if(!it) return false;
-  if(it.category !== "Consumables") return false;
-
-  // heal (HP clamp rule)
-  const heal = Number(it.heal || 0);
-  if(heal > 0){
-    state.player.hp = clamp(state.player.hp + heal, 0, state.player.maxHp);
-  }
-
-  decItem(name, 1);
-  return true;
-}
-
-/* -------------------- Story Engine -------------------- */
-function getSection(id){
-  if(!storyData || !storyData.sections) return null;
-  return storyData.sections[id] || null;
-}
-
-function applyEffects(effects){
-  if(!effects) return;
-
-  // Simple effects for demo:
-  // - hpDelta: +/- number
-  // - addItem: {name, category, qty, value, heal?, slot?}
-  // - removeItem: {name, qty}
-  // - goto: "sectionId"
-  if(typeof effects.hpDelta === "number"){
-    state.player.hp = clamp(state.player.hp + effects.hpDelta, 0, state.player.maxHp);
-  }
-
-  if(effects.addItem){
-    const add = effects.addItem;
-    const existing = findInvItem(add.name);
-    if(existing){
-      existing.qty = (existing.qty || 0) + (add.qty || 1);
-    }else{
-      state.player.inventory.push({
-        name: add.name,
-        category: add.category,
-        qty: add.qty || 1,
-        value: add.value || 0,
-        heal: add.heal,
-        slot: add.slot
-      });
-    }
-  }
-
-  if(effects.removeItem){
-    const rem = effects.removeItem;
-    decItem(rem.name, rem.qty || 1);
-  }
-
-  if(effects.goto){
-    state.currentSectionId = effects.goto;
-  }
-}
-
-function choose(choice){
-  if(!choice) return;
-
-  // choice: { text, to, effects? }
-  if(choice.effects) applyEffects(choice.effects);
-  if(choice.to) state.currentSectionId = choice.to;
-
-  // death hint
-  if(state.player.hp <= 0){
-    showAlert("You’re at 0 HP. First time? That’s your warning. Load or return to the main menu.");
-  }
-
-  saveToLocal();
+function toastDialog(title, message){
+  state.ui.modal = { type: "dialog", title, message };
   render();
 }
 
-/* -------------------- UI Components -------------------- */
-function el(tag, attrs={}, children=[]){
-  const node = document.createElement(tag);
-  for(const [k,v] of Object.entries(attrs)){
-    if(k === "class") node.className = v;
-    else if(k === "html") node.innerHTML = v;
-    else if(k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2).toLowerCase(), v);
-    else node.setAttribute(k, v);
+async function fetchJson(url){
+  const res = await fetch(url, { cache: "no-store" });
+  if(!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+  return await res.json();
+}
+
+async function loadStoriesIndex(){
+  const idx = await fetchJson("stories.json");
+  state.storiesIndex = idx;
+  state.storyMetaById.clear();
+  (idx.stories || []).forEach(s => state.storyMetaById.set(s.id, s));
+}
+
+async function loadStoryById(storyId){
+  const meta = state.storyMetaById.get(storyId);
+  if(!meta){
+    throw new Error("Story not found in stories.json");
   }
-  for(const c of children){
-    if(c === null || c === undefined) continue;
-    if(typeof c === "string") node.appendChild(document.createTextNode(c));
-    else node.appendChild(c);
+  const story = await fetchJson(meta.file);
+  state.story = story;
+  state.storyId = storyId;
+
+  // pick start section
+  const start = story.start || story.startSectionId || "START";
+  state.sectionId = start;
+
+  // ensure player baseline when switching stories (silo story-specific later)
+  if(!state.player) state.player = DEFAULT_PLAYER();
+
+  localStorage.setItem(LS.LAST_STORY, storyId);
+}
+
+function saveGame(){
+  const payload = {
+    storyId: state.storyId,
+    sectionId: state.sectionId,
+    player: state.player,
+    savedAt: Date.now(),
+  };
+  localStorage.setItem(LS.SAVE, JSON.stringify(payload));
+  toastDialog("Saved", "Your progress was saved locally on this device.");
+}
+
+function loadGame(){
+  const raw = localStorage.getItem(LS.SAVE);
+  if(!raw){
+    toastDialog("No Save Found", "There is no local save on this device yet.");
+    return;
   }
-  return node;
-}
-
-function modal(title, bodyNode, onClose){
-  const backdrop = el("div", { class: "vc-modal-backdrop", onclick: (e)=>{ if(e.target === backdrop) onClose(); }});
-  const box = el("div", { class: "vc-modal" });
-
-  const head = el("div", { class: "vc-modal-head" }, [
-    el("h3", { class: "vc-modal-title" }, [title]),
-    el("button", { class: "vc-btn small secondary", onclick: onClose }, ["Close"])
-  ]);
-
-  const body = el("div", { class: "vc-modal-body" }, [bodyNode]);
-
-  box.appendChild(head);
-  box.appendChild(body);
-  backdrop.appendChild(box);
-  document.body.appendChild(backdrop);
-
-  return ()=> backdrop.remove();
-}
-
-/* -------------------- Screens -------------------- */
-function renderHome(){
-  const shell = el("div", { class: "vc-shell" });
-
-  const panel = el("div", { class: "vc-panel" });
-  const inner = el("div", { class: "vc-panel-inner" });
-
-  const hero = el("div", { class: "home-hero" }, [
-    el("img", { class: "home-logo", src: "assets/versecraft-logo.png", alt: "VerseCraft" }),
-    el("p", { class: "home-tag" }, ["Choose Your Paths. Live Your Story."])
-  ]);
-
-  const actions = el("div", { class: "home-actions" });
-
-  const saved = loadFromLocal();
-  const hasSave = !!(saved && saved.currentStoryId && saved.currentSectionId);
-
-  const btnTap = el("button", {
-    class: "vc-btn",
-    onclick: async ()=>{
-      // start default story fresh
-      state.player = DEFAULT_PLAYER();
-      state.hudCollapsed = false;
-      await loadStoryById((await ensureStoriesIndex()).defaultStoryId);
-      state.screen = "game";
-      saveToLocal();
+  let data;
+  try{ data = JSON.parse(raw); }
+  catch{
+    toastDialog("Save Corrupted", "The local save could not be read.");
+    return;
+  }
+  if(!data.storyId){
+    toastDialog("Save Invalid", "Saved story data is missing.");
+    return;
+  }
+  // validate story exists in index
+  if(!state.storyMetaById.get(data.storyId)){
+    toastDialog("Saved Story Not Found", "Saved story not found in stories.json");
+    return;
+  }
+  // load story then apply state
+  (async () => {
+    try{
+      await loadStoryById(data.storyId);
+      state.player = data.player || DEFAULT_PLAYER();
+      state.sectionId = data.sectionId || (state.story.start || "START");
+      state.mode = "game";
+      state.ui.modal = null;
       render();
+    }catch(err){
+      toastDialog("Load Failed", String(err?.message || err));
     }
-  }, ["Tap To Start"]);
-
-  const btnLoadStory = el("button", {
-    class: "vc-btn secondary",
-    onclick: async ()=> openStoryPicker()
-  }, ["Load New Story"]);
-
-  // Option B: disabled placeholder for shop
-  const btnShop = el("button", {
-    class: "vc-btn secondary disabled",
-    disabled: true
-  }, ["Go To Shop"]);
-
-  actions.appendChild(btnTap);
-  actions.appendChild(btnLoadStory);
-  actions.appendChild(btnShop);
-
-  // Continue (only if a valid save exists)
-  const btnContinue = el("button", {
-    class: `vc-btn secondary ${hasSave ? "" : "disabled"}`,
-    disabled: !hasSave,
-    onclick: async ()=>{
-      const s = loadFromLocal();
-      if(!s) return;
-      await loadStoryById(s.currentStoryId);
-      state.currentSectionId = s.currentSectionId;
-      state.hudCollapsed = !!s.hudCollapsed;
-      state.player = s.player || DEFAULT_PLAYER();
-      state.screen = "game";
-      render();
-    }
-  }, ["Continue Story"]);
-
-  actions.appendChild(btnContinue);
-
-  inner.appendChild(hero);
-  inner.appendChild(actions);
-
-  panel.appendChild(inner);
-  shell.appendChild(panel);
-
-  return shell;
+  })();
 }
 
-async function openStoryPicker(){
-  const idx = await ensureStoriesIndex();
+function getSection(){
+  const s = state.story;
+  if(!s) return null;
 
-  const list = el("div", { class: "story-list" }, idx.stories.map(st => {
-    return el("div", {
-      class: "story-card",
-      onclick: async ()=>{
-        // confirm dialog first (your request)
-        const ok = window.confirm(`Load "${st.title}"?\n\nThis will start the story at its beginning (your save remains available via Continue Story).`);
-        if(!ok) return;
+  // support both shapes:
+  // 1) story.sections is object {ID: {text, choices}}
+  // 2) story.sections is array [{id, text, choices}]
+  if(Array.isArray(s.sections)){
+    return s.sections.find(x => x.id === state.sectionId) || null;
+  }
+  if(s.sections && typeof s.sections === "object"){
+    return s.sections[state.sectionId] ? { id: state.sectionId, ...s.sections[state.sectionId] } : null;
+  }
+  return null;
+}
 
-        // load story fresh, but keep inventory defaults (story-specific sets come later)
-        state.player = DEFAULT_PLAYER();
-        state.hudCollapsed = false;
-        await loadStoryById(st.id);
-        state.screen = "game";
-        saveToLocal();
-        close();
-        render();
+function applyEffect(effect){
+  if(!effect) return;
+
+  // HP change
+  if(typeof effect.hp === "number"){
+    const p = state.player;
+    p.hp.cur = clamp(p.hp.cur + effect.hp, 0, p.hp.max);
+  }
+
+  // flags
+  if(effect.setFlag){
+    state.player.flags[effect.setFlag] = true;
+  }
+  if(effect.clearFlag){
+    delete state.player.flags[effect.clearFlag];
+  }
+
+  // inventory add/remove
+  if(effect.addItem){
+    addItem(effect.addItem);
+  }
+  if(effect.removeItem){
+    removeItem(effect.removeItem);
+  }
+
+  // xp
+  if(typeof effect.xp === "number"){
+    const p = state.player;
+    p.xp.cur = clamp(p.xp.cur + effect.xp, 0, p.xp.max);
+  }
+}
+
+function addItem(spec){
+  // spec: {category, id, name, qty, value, use, equipSlot}
+  const cat = spec.category;
+  if(!cat || !state.player.inv[cat]) return;
+  const list = state.player.inv[cat];
+  const id = spec.id;
+  const existing = list.find(x => x.id === id);
+  if(existing){
+    existing.qty = clamp((existing.qty || 0) + (spec.qty || 1), 0, 9999);
+  }else{
+    list.push({
+      id,
+      name: safeTitleCaseName(spec.name || id),
+      qty: clamp(spec.qty || 1, 0, 9999),
+      value: spec.value ?? 0,
+      use: spec.use,
+      equipSlot: spec.equipSlot,
+    });
+  }
+}
+
+function removeItem(spec){
+  // spec: {category, id, qty}
+  const cat = spec.category;
+  if(!cat || !state.player.inv[cat]) return;
+  const list = state.player.inv[cat];
+  const it = list.find(x => x.id === spec.id);
+  if(!it) return;
+  const q = spec.qty ?? 1;
+  it.qty = clamp((it.qty || 0) - q, 0, 9999);
+  if(it.qty === 0){
+    // keep row if it’s equip slot? remove it to be clean
+    list.splice(list.indexOf(it), 1);
+  }
+}
+
+function canShowChoice(choice){
+  if(!choice) return true;
+  const req = choice.requires;
+  if(!req) return true;
+
+  // requires: {flag:"x"} or {notFlag:"x"} or {hasItem:{category,id}} etc.
+  if(req.flag && !state.player.flags[req.flag]) return false;
+  if(req.notFlag && state.player.flags[req.notFlag]) return false;
+
+  if(req.hasItem){
+    const { category, id } = req.hasItem;
+    const list = state.player.inv[category] || [];
+    const it = list.find(x => x.id === id);
+    if(!it || (it.qty || 0) <= 0) return false;
+  }
+
+  return true;
+}
+
+function onChoose(choice){
+  // apply effects
+  if(choice.effects){
+    const arr = Array.isArray(choice.effects) ? choice.effects : [choice.effects];
+    arr.forEach(applyEffect);
+  }
+
+  // death screen
+  if(state.player.hp.cur <= 0){
+    state.sectionId = "DEATH";
+    render();
+    return;
+  }
+
+  // go to section
+  if(choice.to){
+    state.sectionId = choice.to;
+    render();
+    return;
+  }
+
+  // if no target, just re-render
+  render();
+}
+
+function ensureDeathSection(){
+  const s = state.story;
+  if(!s) return;
+
+  const deathText =
+`You collapse as your strength gives out.
+
+This is the demo’s reminder: HP is your survival meter. When it hits zero, the run ends.
+
+Try again—this time, watch for danger, and use your items when it matters.`;
+
+  // add DEATH section if missing
+  if(Array.isArray(s.sections)){
+    const existing = s.sections.find(x => x.id === "DEATH");
+    if(!existing){
+      s.sections.push({
+        id: "DEATH",
+        text: deathText,
+        system: "First death is expected. You’re learning the rules.",
+        choices: [
+          { label: "Return To Main Menu", toMenu: true }
+        ]
+      });
+    }
+  }else if(s.sections && typeof s.sections === "object"){
+    if(!s.sections.DEATH){
+      s.sections.DEATH = {
+        text: deathText,
+        system: "First death is expected. You’re learning the rules.",
+        choices: [
+          { label: "Return To Main Menu", toMenu: true }
+        ]
+      };
+    }
+  }
+}
+
+function openModal(type){
+  state.ui.modal = { type };
+  render();
+}
+
+function closeModal(){
+  state.ui.modal = null;
+  render();
+}
+
+/* ===== Inventory actions ===== */
+function getInvList(cat){
+  return state.player.inv[cat] || [];
+}
+
+function useItem(cat, id){
+  const list = getInvList(cat);
+  const it = list.find(x => x.id === id);
+  if(!it) return;
+
+  // If not consumable quantity, ignore
+  if((it.qty || 0) <= 0) return;
+
+  // default behavior:
+  // - if heal: clamp hp
+  // - if story tag: set flag to inform story logic (no auto-jump)
+  const use = it.use;
+
+  if(use?.type === "heal"){
+    const amt = use.amount || 0;
+    state.player.hp.cur = clamp(state.player.hp.cur + amt, 0, state.player.hp.max);
+  }else if(use?.type === "story"){
+    // defer to story logic: set a flag; story can branch based on it
+    if(use.tag){
+      state.player.flags[use.tag] = true;
+    }
+  }
+
+  // consume 1
+  it.qty = clamp((it.qty || 0) - 1, 0, 9999);
+  if(it.qty === 0){
+    list.splice(list.indexOf(it), 1);
+  }
+
+  render();
+}
+
+function equipItem(cat, id){
+  const list = getInvList(cat);
+  const it = list.find(x => x.id === id);
+  if(!it) return;
+  const slot = it.equipSlot;
+  if(!slot) return;
+  state.player.equip[slot] = id;
+  render();
+}
+
+function getEquippedName(slot){
+  const id = state.player.equip[slot];
+  if(!id) return "None";
+  const allCats = ["weapons","armor","special","items","consumables"];
+  for(const cat of allCats){
+    const list = state.player.inv[cat] || [];
+    const it = list.find(x => x.id === id);
+    if(it) return it.name;
+  }
+  // fallback if missing in inventory list
+  return safeTitleCaseName(id);
+}
+
+/* ===== Render ===== */
+function render(){
+  const root = document.getElementById("app");
+  if(!root) return;
+
+  if(state.mode === "home"){
+    root.innerHTML = renderHome();
+  }else if(state.mode === "game"){
+    root.innerHTML = renderGame();
+  }else{
+    root.innerHTML = renderBoot();
+  }
+
+  // bind modal close
+  const modalMask = document.querySelector(".vc-modalMask");
+  if(modalMask){
+    // click outside closes
+    modalMask.addEventListener("click", (e) => {
+      if(e.target === modalMask) closeModal();
+    });
+  }
+
+  // hud minimize
+  const minBtn = document.getElementById("hudMinBtn");
+  if(minBtn){
+    minBtn.addEventListener("click", () => {
+      const isMin = document.body.classList.toggle("hud-min");
+      minBtn.textContent = isMin ? "Expand" : "Minimize";
+    });
+  }
+
+  // home buttons
+  const btnTap = document.getElementById("btnTapStart");
+  if(btnTap){
+    btnTap.addEventListener("click", async () => {
+      const last = localStorage.getItem(LS.LAST_STORY) || state.storiesIndex?.defaultStoryId;
+      if(!last){
+        toastDialog("No Story", "No default story is set in stories.json");
+        return;
       }
-    }, [
-      el("p", { class: "story-title" }, [st.title]),
-      el("p", { class: "story-sub" }, [st.subtitle || ""]),
-      el("p", { class: "story-meta" }, [st.estimate || ""])
-    ]);
-  }));
+      try{
+        await loadStoryById(last);
+        ensureDeathSection();
+        state.mode = "game";
+        render();
+      }catch(err){
+        toastDialog("Start Failed", String(err?.message || err));
+      }
+    });
+  }
 
-  const close = modal("Load Story", el("div", {}, [
-    el("div", { class: "vc-label" }, ["Select A Story"]),
-    el("div", { class: "vc-divider" }),
-    list
-  ]), ()=> closer());
+  const btnPicker = document.getElementById("btnStoryPicker");
+  if(btnPicker){
+    btnPicker.addEventListener("click", () => openModal("picker"));
+  }
 
-  const closer = close;
+  const btnContinue = document.getElementById("btnContinue");
+  if(btnContinue){
+    btnContinue.addEventListener("click", () => {
+      // Continue means: load save if exists, else start last story
+      const raw = localStorage.getItem(LS.SAVE);
+      if(raw){
+        loadGame();
+      }else{
+        const last = localStorage.getItem(LS.LAST_STORY) || state.storiesIndex?.defaultStoryId;
+        if(!last){
+          toastDialog("No Story", "No default story is set in stories.json");
+          return;
+        }
+        (async () => {
+          try{
+            await loadStoryById(last);
+            ensureDeathSection();
+            state.mode = "game";
+            render();
+          }catch(err){
+            toastDialog("Continue Failed", String(err?.message || err));
+          }
+        })();
+      }
+    });
+  }
+
+  // picker selection
+  document.querySelectorAll("[data-pick-story]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const id = btn.getAttribute("data-pick-story");
+      try{
+        await loadStoryById(id);
+        ensureDeathSection();
+        state.mode = "game";
+        state.ui.modal = null;
+        render();
+      }catch(err){
+        toastDialog("Story Switch Failed", String(err?.message || err));
+      }
+    });
+  });
+
+  // in-game HUD buttons
+  const bChar = document.getElementById("btnCharacter");
+  if(bChar) bChar.addEventListener("click", () => openModal("character"));
+
+  const bInv = document.getElementById("btnInventory");
+  if(bInv) bInv.addEventListener("click", () => openModal("inventory"));
+
+  const bSave = document.getElementById("btnSave");
+  if(bSave) bSave.addEventListener("click", saveGame);
+
+  const bLoad = document.getElementById("btnLoad");
+  if(bLoad) bLoad.addEventListener("click", loadGame);
+
+  const bMenu = document.getElementById("btnMainMenu");
+  if(bMenu) bMenu.addEventListener("click", () => {
+    setBodyHudMin(false);
+    state.mode = "home";
+    state.ui.modal = null;
+    render();
+  });
+
+  // choice buttons
+  document.querySelectorAll("[data-choice]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const idx = Number(btn.getAttribute("data-choice"));
+      const sec = getSection();
+      if(!sec) return;
+      const choices = (sec.choices || []).filter(canShowChoice);
+      const choice = choices[idx];
+      if(!choice) return;
+
+      if(choice.toMenu){
+        setBodyHudMin(false);
+        state.mode = "home";
+        state.ui.modal = null;
+        render();
+        return;
+      }
+
+      onChoose(choice);
+    });
+  });
+
+  // inventory tabs
+  document.querySelectorAll("[data-inv-tab]").forEach(t => {
+    t.addEventListener("click", () => {
+      state.ui.invTab = t.getAttribute("data-inv-tab");
+      render();
+    });
+  });
+
+  // inventory use/equip
+  document.querySelectorAll("[data-use-item]").forEach(b => {
+    b.addEventListener("click", () => {
+      const cat = b.getAttribute("data-cat");
+      const id = b.getAttribute("data-id");
+      useItem(cat, id);
+    });
+  });
+
+  document.querySelectorAll("[data-equip-item]").forEach(b => {
+    b.addEventListener("click", () => {
+      const cat = b.getAttribute("data-cat");
+      const id = b.getAttribute("data-id");
+      equipItem(cat, id);
+    });
+  });
+
+  // modal close buttons
+  document.querySelectorAll("[data-close]").forEach(b => {
+    b.addEventListener("click", closeModal);
+  });
+}
+
+function renderBoot(){
+  return `
+    <div class="vc-wrap">
+      <div class="vc-panel vc-panelPad">
+        <div style="text-align:center; padding: 22px 10px;">
+          <div style="font-weight:900; letter-spacing:.12em; text-transform:uppercase;">VerseCraft</div>
+          <div style="margin-top:10px; color: rgba(234,241,255,.7);">Loading…</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHome(){
+  const hasSave = !!localStorage.getItem(LS.SAVE);
+  const continueClass = hasSave ? "" : "vc-btn--disabled";
+
+  return `
+    <div class="vc-wrap">
+      <div class="vc-panel vc-scroll">
+        <div class="vc-panelPad">
+          <div class="vc-homeTop">
+            <img src="assets/versecraft-logo.png" alt="VerseCraft Logo" />
+          </div>
+
+          <div class="vc-tagline">Choose Your Paths. Live Your Story.</div>
+
+          <button class="vc-btn" id="btnTapStart">Tap To Start</button>
+          <button class="vc-btn" id="btnStoryPicker">Load New Story</button>
+          <button class="vc-btn ${continueClass}" id="btnContinue">Continue Story</button>
+
+          <div class="vc-divider"></div>
+
+          <div class="vc-sectionTitle">Library</div>
+          ${renderLibraryPreview()}
+        </div>
+
+        ${renderModalIfAny()}
+      </div>
+    </div>
+  `;
+}
+
+function renderLibraryPreview(){
+  const stories = state.storiesIndex?.stories || [];
+  if(stories.length === 0){
+    return `<div style="color: rgba(234,241,255,.7);">No stories found in stories.json</div>`;
+  }
+  // preview only (clean first menu); full picker opens separately
+  const first3 = stories.slice(0, 3);
+  return first3.map(s => `
+    <div class="vc-storyCard" style="opacity:.92;">
+      <div class="vc-storyTitle">${safeTitleCaseName(s.title)}</div>
+      <p class="vc-storySub">${safeTitleCaseName(s.subtitle || "")}</p>
+      <div class="vc-storyMeta">${s.estimate || ""}</div>
+    </div>
+  `).join("");
 }
 
 function renderGame(){
-  const shell = el("div", { class: "vc-shell" });
+  const meta = state.storyMetaById.get(state.storyId);
+  const title = safeTitleCaseName(meta?.title || state.story?.title || "Story");
+  const subtitle = safeTitleCaseName(meta?.subtitle || "");
 
-  const wrap = el("div", { class: "game-wrap" });
+  const sec = getSection();
+  const text = sec?.text || "Missing section content.";
+  const system = sec?.system ? String(sec.system) : "";
+  const choices = (sec?.choices || []).filter(canShowChoice);
 
-  const section = getSection(state.currentSectionId);
-  const title = storyData?.title || "Story";
-  const subtitle = storyData?.subtitle || "";
+  // bars
+  const hpPct = state.player.hp.max > 0 ? (state.player.hp.cur / state.player.hp.max) * 100 : 0;
+  const xpPct = state.player.xp.max > 0 ? (state.player.xp.cur / state.player.xp.max) * 100 : 0;
 
-  const hpPct = state.player.maxHp > 0 ? (state.player.hp / state.player.maxHp) * 100 : 0;
-  const xpPct = state.player.xpToLevel > 0 ? (state.player.xp / state.player.xpToLevel) * 100 : 0;
+  return `
+    <div class="vc-wrap">
+      <div class="vc-panel vc-scroll">
+        <div class="vc-hud">
+          <div class="vc-hudInner">
+            <div class="vc-hudTop">
+              <div>
+                <h1 class="vc-hudTitle">${title}</h1>
+                ${subtitle ? `<div style="color: rgba(234,241,255,.68); font-weight:800; margin-top:2px;">${subtitle}</div>` : ""}
+              </div>
+              <button class="vc-minBtn" id="hudMinBtn">Minimize</button>
+            </div>
 
-  const hud = el("div", { class: `vc-panel hud ${state.hudCollapsed ? "collapsed" : ""}` });
-  const hudInner = el("div", { class: "hud-inner" });
+            <div class="vc-bars">
+              <div class="vc-barRow">
+                <div class="vc-barLabel">HP</div>
+                <div class="vc-bar"><div class="vc-barFill" style="width:${hpPct}%;"></div></div>
+                <div class="vc-barVal">${state.player.hp.cur} / ${state.player.hp.max}</div>
+              </div>
+              <div class="vc-barRow">
+                <div class="vc-barLabel">XP</div>
+                <div class="vc-bar"><div class="vc-barFill vc-barFill--xp" style="width:${xpPct}%;"></div></div>
+                <div class="vc-barVal">${state.player.xp.cur} / ${state.player.xp.max}</div>
+              </div>
+              <div style="margin-top:2px; font-weight:900; color: rgba(234,241,255,.85);">LVL ${state.player.lvl}</div>
+            </div>
 
-  const hudTop = el("div", { class: "hud-top" }, [
-    el("div", {}, [
-      el("h2", { class: "hud-title" }, [title]),
-      el("p", { class: "hud-subtitle" }, [subtitle])
-    ]),
-    el("button", {
-      class: "vc-btn small secondary hud-min-btn",
-      onclick: ()=>{
-        state.hudCollapsed = !state.hudCollapsed;
-        saveToLocal();
-        render();
-      }
-    }, [state.hudCollapsed ? "Expand" : "Minimize"])
-  ]);
+            <div class="vc-hudBtns">
+              <button class="vc-btn" id="btnCharacter">Character</button>
+              <button class="vc-btn" id="btnInventory">Inventory</button>
+              <button class="vc-btn" id="btnSave">Save</button>
+            </div>
+            <div class="vc-hudBtns2">
+              <button class="vc-btn" id="btnLoad">Load</button>
+              <button class="vc-btn" id="btnMainMenu">Main Menu</button>
+            </div>
+          </div>
+        </div>
 
-  const bars = el("div", { class: "bars" }, [
-    el("div", { class: "bar-label" }, ["HP"]),
-    el("div", { class: "bar" }, [ el("div", { class: "fill", style: `width:${hpPct}%;` }) ]),
-    el("div", { class: "bar-val" }, [`${state.player.hp} / ${state.player.maxHp}`]),
+        <div class="vc-content">
+          <div class="vc-scene">
+            <div class="vc-sceneTitle">Image Placeholder</div>
+            <div class="vc-sceneSub">Future: scene image or video</div>
+          </div>
 
-    el("div", { class: "bar-label" }, ["XP"]),
-    el("div", { class: "bar xp" }, [ el("div", { class: "fill", style: `width:${xpPct}%;` }) ]),
-    el("div", { class: "bar-val" }, [`${state.player.xp} / ${state.player.xpToLevel}`])
-  ]);
+          <div class="vc-storyText">
+            ${escapeHtml(text).replace(/\n/g, "<br/>")}
+            ${system ? `<div class="vc-systemLine">${escapeHtml(system)}</div>` : ""}
 
-  const actions = el("div", { class: "hud-actions" }, [
-    el("button", { class: "vc-btn", onclick: ()=> openCharacterModal() }, ["Character"]),
-    el("button", { class: "vc-btn", onclick: ()=> openInventoryModal() }, ["Inventory"]),
-    el("button", { class: "vc-btn", onclick: ()=> { saveToLocal(); showAlert("Saved."); } }, ["Save"]),
+            <div class="vc-choices">
+              ${choices.map((c, i) => `<button class="vc-choiceBtn" data-choice="${i}">${escapeHtml(c.label || "Continue")}</button>`).join("")}
+            </div>
+          </div>
+        </div>
 
-    el("button", { class: "vc-btn wide secondary", onclick: ()=> {
-      const s = loadFromLocal();
-      if(!s){ showAlert("No save found."); return; }
-      showAlert("Save is already loaded. (Tip: Continue Story is on Home.)");
-    }}, ["Load"]),
-    el("button", { class: "vc-btn secondary", onclick: ()=>{
-      state.screen = "home";
-      render();
-    }}, ["Main Menu"])
-  ]);
-
-  hudInner.appendChild(hudTop);
-  hudInner.appendChild(bars);
-  hudInner.appendChild(actions);
-  hud.appendChild(hudInner);
-
-  const scene = el("div", { class: "vc-panel" }, [
-    el("div", { class: "scene-panel" }, [
-      el("p", { class: "scene-title" }, ["Image Placeholder"]),
-      el("p", { class: "scene-sub" }, ["Future: scene image or video"])
-    ])
-  ]);
-
-  const textPanel = el("div", { class: "vc-panel" }, [
-    el("div", { class: "text-panel" }, [
-      el("p", { class: "story-text" }, [section?.text || "Missing section content."]),
-      renderChoices(section)
-    ])
-  ]);
-
-  wrap.appendChild(hud);
-  wrap.appendChild(scene);
-  wrap.appendChild(textPanel);
-
-  shell.appendChild(wrap);
-  return shell;
+        ${renderModalIfAny()}
+      </div>
+    </div>
+  `;
 }
 
-function renderChoices(section){
-  const box = el("div", { class: "choices" });
+function renderModalIfAny(){
+  const m = state.ui.modal;
+  if(!m) return "";
 
-  const choices = (section && Array.isArray(section.choices)) ? section.choices : [];
-  if(choices.length === 0){
-    box.appendChild(el("button", {
-      class: "vc-btn choice-btn secondary",
-      onclick: ()=>{
-        // if no choices, return home
-        state.screen = "home";
-        render();
-      }
-    }, ["Return To Main Menu"]));
-    return box;
+  if(m.type === "dialog"){
+    return `
+      <div class="vc-modalMask">
+        <div class="vc-modal">
+          <div class="vc-modalHeader">
+            <h2 class="vc-modalTitle">${escapeHtml(m.title || "Notice")}</h2>
+            <button class="vc-closeBtn" data-close="1">Close</button>
+          </div>
+          <div class="vc-modalBody">
+            <div style="color: rgba(234,241,255,.78); line-height:1.5;">
+              ${escapeHtml(m.message || "").replace(/\n/g, "<br/>")}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
-  choices.forEach(ch => {
-    box.appendChild(el("button", {
-      class: "vc-btn choice-btn secondary",
-      onclick: ()=> choose(ch)
-    }, [ch.text || "Continue"]));
-  });
-
-  return box;
-}
-
-/* -------------------- Modals -------------------- */
-function openCharacterModal(){
-  const p = state.player;
-
-  const statsKeys = ["W","E","A","L","T"];
-  const statsGrid = el("div", { class: "stats-grid" },
-    statsKeys.map(k => el("div", { class: "stat-pill" }, [
-      el("span", { class: "stat-k" }, [k]),
-      el("span", { class: "stat-v" }, [String(p.stats[k] ?? 1)])
-    ]))
-  );
-
-  const avatar = el("div", { class: "avatar-box" }, [
-    el("div", { class: "avatar-sil" }),
-    el("div", { class: "avatar-info" }, [
-      el("div", { class: "vc-label" }, ["Loadout Visible"]),
-      el("div", { class: "loadout" }, [
-        el("h3", {}, ["Loadout"]),
-        el("div", { class: "loadout-row" }, [
-          el("div", { class: "loadout-k" }, ["Weapon"]),
-          el("div", { class: "loadout-v" }, [p.equipped.weapon || "None"])
-        ]),
-        el("div", { class: "loadout-row" }, [
-          el("div", { class: "loadout-k" }, ["Armor"]),
-          el("div", { class: "loadout-v" }, [p.equipped.armor || "None"])
-        ]),
-        el("div", { class: "loadout-row" }, [
-          el("div", { class: "loadout-k" }, ["Special Item"]),
-          el("div", { class: "loadout-v" }, [p.equipped.special || "None"])
-        ])
-      ])
-    ])
-  ]);
-
-  const body = el("div", { class: "char-grid" }, [
-    el("div", {}, [
-      el("div", { class: "vc-label" }, ["W E A L T H"]),
-      el("div", { class: "vc-divider" }),
-      statsGrid
-    ]),
-    avatar
-  ]);
-
-  const close = modal("Character", body, ()=> closer());
-  const closer = close;
-}
-
-function openInventoryModal(){
-  let active = "Consumables";
-
-  function renderList(){
-    const wrap = el("div", {});
-    const tabs = el("div", { class: "tabs" }, ["Consumables","Items","Weapons","Armor","Special"].map(cat => {
-      return el("button", {
-        class: `tab ${active===cat ? "active" : ""}`,
-        onclick: ()=>{
-          active = cat;
-          rerender();
-        }
-      }, [cat]);
-    }));
-
-    const items = state.player.inventory.filter(i => i.category === active);
-
-    const list = el("div", {}, items.length ? items.map(it => {
-      const metaBits = [];
-      metaBits.push(`Value: ${it.value ?? 0}`);
-      if(active === "Consumables") metaBits.push(`Qty: ${it.qty ?? 0}`);
-      if(active !== "Consumables") metaBits.push(`Owned: ${it.qty ?? 0}`);
-
-      const row = el("div", { class: "item-row" }, [
-        el("div", {}, [
-          el("p", { class: "item-name" }, [it.name]),
-          el("p", { class: "item-meta" }, [metaBits.join("  •  ")])
-        ]),
-        el("div", { class: "item-actions" }, [
-          active === "Consumables"
-            ? el("button", {
-                class: "vc-btn small secondary",
-                onclick: ()=>{
-                  const ok = useConsumable(it.name);
-                  if(!ok) showAlert("Could not use item.");
-                  saveToLocal();
-                  render();
-                  rerender();
-                }
-              }, ["Use"])
-            : (it.slot
-                ? el("button", {
-                    class: "vc-btn small secondary",
-                    onclick: ()=>{
-                      const ok = equipItem(it.name);
-                      if(!ok) showAlert("Could not equip item.");
-                      saveToLocal();
-                      render();
-                      rerender();
-                    }
-                  }, ["Equip"])
-                : el("span", { class: "vc-label" }, [""])
-              )
-        ])
-      ]);
-
-      return row;
-    }) : [
-      el("div", { class: "vc-label" }, ["No Items In This Category"])
-    ]);
-
-    wrap.appendChild(tabs);
-    wrap.appendChild(list);
-    return wrap;
+  if(m.type === "picker"){
+    const stories = state.storiesIndex?.stories || [];
+    return `
+      <div class="vc-modalMask">
+        <div class="vc-modal">
+          <div class="vc-modalHeader">
+            <h2 class="vc-modalTitle">Load Story</h2>
+            <button class="vc-closeBtn" data-close="1">Close</button>
+          </div>
+          <div class="vc-modalBody">
+            ${stories.map(s => `
+              <button class="vc-storyCard" data-pick-story="${s.id}">
+                <div class="vc-storyTitle">${escapeHtml(safeTitleCaseName(s.title))}</div>
+                <p class="vc-storySub">${escapeHtml(safeTitleCaseName(s.subtitle || ""))}</p>
+                <div class="vc-storyMeta">${escapeHtml(s.estimate || "")}</div>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    `;
   }
 
-  let closeFn = null;
-  let container = null;
+  if(m.type === "character"){
+    const w = state.player.wealth;
+    return `
+      <div class="vc-modalMask">
+        <div class="vc-modal">
+          <div class="vc-modalHeader">
+            <h2 class="vc-modalTitle">Character</h2>
+            <button class="vc-closeBtn" data-close="1">Close</button>
+          </div>
 
-  function rerender(){
-    if(!container) return;
-    container.innerHTML = "";
-    container.appendChild(renderList());
+          <div class="vc-modalBody">
+            <div class="vc-grid2">
+              ${statTile("W", w.W)}
+              ${statTile("E", w.E)}
+              ${statTile("A", w.A)}
+              ${statTile("L", w.L)}
+              ${statTile("T", w.T)}
+              ${statTile("H", w.H)}
+            </div>
+
+            <div class="vc-avatarBox">
+              <div style="font-weight:900; margin-bottom:10px;">Avatar</div>
+              <div class="vc-silhouette"></div>
+            </div>
+
+            <div class="vc-loadout">
+              <h3>Loadout</h3>
+              ${loadoutRow("Weapon", getEquippedName("weapon"))}
+              ${loadoutRow("Armor", getEquippedName("armor"))}
+              ${loadoutRow("Special Item", getEquippedName("special"))}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
-  container = el("div", {});
-  container.appendChild(renderList());
+  if(m.type === "inventory"){
+    const tab = state.ui.invTab;
+    return `
+      <div class="vc-modalMask">
+        <div class="vc-modal">
+          <div class="vc-modalHeader">
+            <h2 class="vc-modalTitle">Inventory</h2>
+            <button class="vc-closeBtn" data-close="1">Close</button>
+          </div>
 
-  closeFn = modal("Inventory", container, ()=> closer());
-  const closer = closeFn;
-}
+          <div class="vc-modalBody">
+            <div class="vc-tabs">
+              ${tabBtn("consumables","Consumables",tab)}
+              ${tabBtn("items","Items",tab)}
+              ${tabBtn("weapons","Weapons",tab)}
+              ${tabBtn("armor","Armor",tab)}
+              ${tabBtn("special","Special",tab)}
+            </div>
 
-/* -------------------- Render Root -------------------- */
-function render(){
-  APP.innerHTML = "";
-  const root = el("div", { class: "vc-app" }, [
-    el("div", { class: "vc-shell" }, [])
-  ]);
-
-  const shell = root.querySelector(".vc-shell");
-  if(state.screen === "home"){
-    shell.appendChild(renderHome());
-  }else{
-    shell.appendChild(renderGame());
+            ${renderInvTab(tab)}
+          </div>
+        </div>
+      </div>
+    `;
   }
 
-  APP.appendChild(root);
+  return "";
 }
 
-/* -------------------- Boot -------------------- */
-async function boot(){
+function statTile(k, v){
+  return `
+    <div class="vc-statTile">
+      <span class="k">${escapeHtml(k)}</span>
+      <span class="v">${escapeHtml(String(v))}</span>
+    </div>
+  `;
+}
+
+function loadoutRow(key, val){
+  return `
+    <div class="vc-loadoutRow">
+      <div class="vc-loadoutKey">${escapeHtml(key)}</div>
+      <div class="vc-loadoutVal">${escapeHtml(val)}</div>
+    </div>
+  `;
+}
+
+function tabBtn(id, label, active){
+  const cls = id === active ? "vc-tab vc-tab--active" : "vc-tab";
+  return `<button class="${cls}" data-inv-tab="${id}">${escapeHtml(label)}</button>`;
+}
+
+function renderInvTab(cat){
+  const list = getInvList(cat);
+
+  if(!list || list.length === 0){
+    return `<div style="color: rgba(234,241,255,.70); padding: 8px 2px;">Nothing here yet.</div>`;
+  }
+
+  const canUse = (cat === "consumables" || cat === "items");
+  const canEquip = (cat === "weapons" || cat === "armor" || cat === "special");
+
+  return list.map(it => {
+    const name = safeTitleCaseName(it.name);
+    const qty = it.qty ?? 0;
+    const value = it.value ?? 0;
+
+    return `
+      <div class="vc-itemRow">
+        <div>
+          <div class="vc-itemName">${escapeHtml(name)}${qty > 1 ? ` x${qty}` : qty === 1 ? "" : ""}</div>
+          <div class="vc-itemMeta">Value: ${escapeHtml(String(value))}</div>
+        </div>
+
+        <div class="vc-itemActions">
+          ${canUse ? `<button class="vc-miniBtn" data-use-item="1" data-cat="${cat}" data-id="${it.id}">Use</button>` : ""}
+          ${canEquip && it.equipSlot ? `<button class="vc-miniBtn" data-equip-item="1" data-cat="${cat}" data-id="${it.id}">Equip</button>` : ""}
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function escapeHtml(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+/* ===== Boot ===== */
+(async function init(){
   try{
-    await ensureStoriesIndex();
+    await loadStoriesIndex();
+    // start at home
+    state.mode = "home";
 
-    const saved = loadFromLocal();
-    if(saved && saved.currentStoryId){
-      // Load into home by default; Continue Story uses saved
-      // But we do validate the story exists quietly
-      const idx = await ensureStoriesIndex();
-      const ok = idx.stories.some(s => s.id === saved.currentStoryId);
-      if(!ok){
-        // prevent "Saved story not found in stories.json"
-        resetSave();
-      }
+    // if a save exists, keep last story id aligned for Continue
+    const raw = localStorage.getItem(LS.SAVE);
+    if(raw){
+      try{
+        const saved = JSON.parse(raw);
+        if(saved?.storyId) localStorage.setItem(LS.LAST_STORY, saved.storyId);
+      }catch{}
     }
 
-    // Start at home always (clean UX)
-    state.screen = "home";
     render();
   }catch(err){
-    showAlert(`Boot error: ${err.message}`);
+    state.mode = "home";
     render();
+    toastDialog("Boot Failed", "Could not load stories.json. Make sure it exists in the repo root.");
   }
-}
-
-boot();
+})();

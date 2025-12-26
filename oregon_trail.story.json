@@ -1,19 +1,16 @@
 {
+  "storyId": "oregon_trail",
   "title": "Oregon Trail",
   "subtitle": "A Short Survival Run",
-  "start": "start",
-  "sections": {
-    "start": {
-      "text": "A wagon creaks. A river glitters ahead. The sky looks honest—until it doesn’t.",
+  "startSectionId": "start",
+  "sections": [
+    {
+      "id": "start",
+      "text": ["Wheels creak. The horizon is a dare. Someone coughs behind you."],
       "choices": [
-        { "text": "Continue", "to": "next" }
-      ]
-    },
-    "next": {
-      "text": "This will become a tight survival demo with item pressure, small HP losses, and smart consumable use.",
-      "choices": [
-        { "text": "Return To Main Menu", "to": "start" }
+        { "text": "Open Inventory", "to": "INVENTORY" },
+        { "text": "Return To Menu", "to": "MAIN_MENU" }
       ]
     }
-  }
+  ]
 }

@@ -1,19 +1,16 @@
 {
+  "storyId": "wasteland",
   "title": "Wasteland",
-  "subtitle": "A Scavenger Survival Demo",
-  "start": "start",
-  "sections": {
-    "start": {
-      "text": "Wind drags grit across the road like sandpaper. Somewhere, metal ticks as it cools.",
+  "subtitle": "Dust And Decisions",
+  "startSectionId": "start",
+  "sections": [
+    {
+      "id": "start",
+      "text": ["The wind carries ash like snow. Somewhere, a radio clicks once—then goes dead."],
       "choices": [
-        { "text": "Continue", "to": "next" }
-      ]
-    },
-    "next": {
-      "text": "This becomes your scavenger loop demo: find value, manage consumables, survive damage, and upgrade loadout.",
-      "choices": [
-        { "text": "Return To Main Menu", "to": "start" }
+        { "text": "Open Character Sheet", "to": "CHARACTER" },
+        { "text": "Return To Menu", "to": "MAIN_MENU" }
       ]
     }
-  }
+  ]
 }
