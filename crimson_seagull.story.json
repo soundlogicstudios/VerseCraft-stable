@@ -1,0 +1,16 @@
+{
+  "storyId": "crimson_seagull",
+  "title": "The Crimson Seagull And The Burning Ember Crown",
+  "subtitle": "A Pirate CYOARPG Demo",
+  "startSectionId": "start",
+  "sections": [
+    {
+      "id": "start",
+      "text": ["Salt stings your lips. The sea is black glass. The Crown is out there—waiting."],
+      "choices": [
+        { "text": "Open Inventory", "to": "INVENTORY" },
+        { "text": "Return To Menu", "to": "MAIN_MENU" }
+      ]
+    }
+  ]
+}
