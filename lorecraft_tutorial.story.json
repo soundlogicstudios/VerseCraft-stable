@@ -1,0 +1,37 @@
+{
+  "title": "Lorecraft Tutorial",
+  "subtitle": "The World That Notices",
+  "start": "start",
+  "sections": {
+    "start": {
+      "text": "You arrive in Lorecraft with the feeling that the world has already been paying attention.\n\nNot judging—just… noticing.",
+      "choices": [
+        { "text": "Continue", "to": "teach_basics" }
+      ]
+    },
+    "teach_basics": {
+      "text": "VerseCraft basics: You make choices.\nChoices can change state. State changes what choices appear.\n\nWEALTH is your profile: W E A L T H. HP is your survival meter.",
+      "choices": [
+        { "text": "Step forward into the corridor", "to": "hp_test" }
+      ]
+    },
+    "hp_test": {
+      "text": "A loose panel snaps underfoot. You stumble—hard.\n\nYou take a hit. It’s not deadly, but it’s enough to prove a point: HP matters.",
+      "choices": [
+        { "text": "Keep moving", "to": "after_hit", "effects": { "hpDelta": -4 } }
+      ]
+    },
+    "after_hit": {
+      "text": "Your breath steadies. If you have a Bandage, you can use it from Inventory to recover HP.\n\n(Inventory → Consumables → Use.)",
+      "choices": [
+        { "text": "Continue", "to": "end" }
+      ]
+    },
+    "end": {
+      "text": "That’s the core loop: story + choices + stats + items.\n\nNext: we’ll make the tutorial less mysterious and more explicitly instructional.",
+      "choices": [
+        { "text": "Return To Main Menu", "to": "start" }
+      ]
+    }
+  }
+}
