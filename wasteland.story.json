@@ -1,0 +1,19 @@
+{
+  "title": "Wasteland",
+  "subtitle": "A Scavenger Survival Demo",
+  "start": "start",
+  "sections": {
+    "start": {
+      "text": "Wind drags grit across the road like sandpaper. Somewhere, metal ticks as it cools.",
+      "choices": [
+        { "text": "Continue", "to": "next" }
+      ]
+    },
+    "next": {
+      "text": "This becomes your scavenger loop demo: find value, manage consumables, survive damage, and upgrade loadout.",
+      "choices": [
+        { "text": "Return To Main Menu", "to": "start" }
+      ]
+    }
+  }
+}
