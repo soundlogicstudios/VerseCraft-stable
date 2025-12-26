@@ -648,6 +648,7 @@ function openModal(type){ state.ui.modal = { type }; render(); }
 function findActionEl(target){
   if(!target) return null;
   return target.closest?.(
+    "#btnTapStart,#btnStoryPicker,#btnContinue,#hudMinBtn,#btnCharacter,#btnInventory,#btnSave,#btnLoad,#btnMainMenu," +
     "[data-pick-story],[data-choice],[data-inv-tab],[data-use-item],[data-equip-item],[data-close],[data-mask]"
   ) || null;
 }
