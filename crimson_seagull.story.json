@@ -1,0 +1,19 @@
+{
+  "title": "The Crimson Seagull And The Burning Ember Crown",
+  "subtitle": "A Mythic Pirate Adventure Demo",
+  "start": "start",
+  "sections": {
+    "start": {
+      "text": "Salt air. Black sails. A rumor so sharp it cuts.\n\nThey say the Ember Crown burns without flame.",
+      "choices": [
+        { "text": "Continue", "to": "next" }
+      ]
+    },
+    "next": {
+      "text": "This becomes the flagship mythic adventure demo with branching quests, keys/fragments, and artifact-style Specials.",
+      "choices": [
+        { "text": "Return To Main Menu", "to": "start" }
+      ]
+    }
+  }
+}
