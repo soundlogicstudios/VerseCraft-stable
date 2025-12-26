@@ -1,0 +1,16 @@
+{
+  "storyId": "wasteland",
+  "title": "Wasteland",
+  "subtitle": "Dust And Decisions",
+  "startSectionId": "start",
+  "sections": [
+    {
+      "id": "start",
+      "text": ["The wind carries ash like snow. Somewhere, a radio clicks once—then goes dead."],
+      "choices": [
+        { "text": "Open Character Sheet", "to": "CHARACTER" },
+        { "text": "Return To Menu", "to": "MAIN_MENU" }
+      ]
+    }
+  ]
+}
