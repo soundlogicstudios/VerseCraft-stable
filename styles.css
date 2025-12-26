@@ -1,0 +1,409 @@
+/* =========================
+   VerseCraft Stable UI Shell
+   (iOS-safe scaling + carved look)
+   ========================= */
+
+:root{
+  --bg0:#071422;
+  --bg1:#0a1b2b;
+  --panel:#0b1d2d;
+  --panel2:#0a1724;
+
+  --text:#eaf1ff;
+  --muted:rgba(234,241,255,.65);
+
+  --gold1:#f2d08a;
+  --gold2:#b8872f;
+  --gold3:rgba(242,208,138,.25);
+
+  --line:rgba(255,255,255,.10);
+  --shadow:rgba(0,0,0,.45);
+
+  --radius-lg:28px;
+  --radius-md:18px;
+  --radius-sm:14px;
+
+  --maxw:560px;
+}
+
+/* iOS “blown up” prevention */
+html{
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  background: radial-gradient(1200px 800px at 50% 0%, #113055 0%, var(--bg0) 60%, #040b12 100%);
+  color:var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing:.2px;
+}
+
+#app{
+  width:100%;
+  min-height:100vh;
+}
+
+/* App frame */
+.vc-wrap{
+  width:min(var(--maxw), calc(100vw - 28px));
+  margin: 0 auto;
+  padding: 16px 0 28px;
+}
+
+/* Carved panel */
+.vc-panel{
+  background:
+    radial-gradient(900px 420px at 50% -10%, rgba(120,180,255,.12) 0%, rgba(10,25,40,.0) 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 35%, rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg, rgba(11,29,45,.92) 0%, rgba(7,20,34,.92) 100%);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 48px var(--shadow);
+  overflow:hidden;
+}
+
+/* subtle gold inner frame */
+.vc-panel::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border-radius: calc(var(--radius-lg) - 10px);
+  border:1px solid rgba(242,208,138,.18);
+  pointer-events:none;
+}
+
+/* must be positioned for ::before */
+.vc-panel{ position:relative; }
+
+/* Home / Menu Header */
+.vc-home{
+  padding: 18px 18px 16px;
+}
+
+.vc-logoBox{
+  width:100%;
+  border-radius: var(--radius-md);
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.14));
+  overflow:hidden;
+  box-shadow: inset 0 0 0 1px rgba(242,208,138,.10);
+}
+
+/* Critical: constrain the logo so it never blows out */
+.vc-logoBox img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height: 46vh;         /* keeps the logo from taking the entire screen */
+  object-fit: contain;      /* no cropping */
+}
+
+.vc-tagline{
+  text-align:center;
+  margin: 12px 0 10px;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+/* Carved button */
+.vc-btn{
+  width:100%;
+  border:1px solid rgba(242,208,138,.24);
+  border-radius: 999px;
+  padding: 14px 18px;
+  background:
+    radial-gradient(120px 60px at 14% 50%, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 70%),
+    radial-gradient(120px 60px at 86% 50%, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 70%),
+    linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(0,0,0,.14) 100%),
+    linear-gradient(180deg, rgba(13,38,58,.94) 0%, rgba(8,20,34,.94) 100%);
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: .86rem;
+  box-shadow: 0 10px 22px rgba(0,0,0,.35);
+}
+
+.vc-btn:active{
+  transform: translateY(1px);
+  filter: brightness(.98);
+}
+
+.vc-btn + .vc-btn{ margin-top: 12px; }
+
+.vc-btn--disabled{
+  opacity:.45;
+  border-color: rgba(255,255,255,.10);
+  pointer-events:none;
+}
+
+/* Story list */
+.vc-divider{
+  height:1px;
+  background: rgba(255,255,255,.10);
+  margin: 16px 0;
+}
+
+.vc-sectionTitle{
+  font-size:.92rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(234,241,255,.70);
+  margin: 0 0 10px;
+}
+
+.vc-storyCard{
+  width:100%;
+  text-align:left;
+  border-radius: var(--radius-md);
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.14)),
+    linear-gradient(180deg, rgba(10,30,46,.92), rgba(7,16,28,.92));
+  padding: 14px 14px;
+  box-shadow: inset 0 0 0 1px rgba(242,208,138,.08);
+}
+
+.vc-storyCard + .vc-storyCard{ margin-top: 12px; }
+
+.vc-storyTitle{
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #77c7ff;
+  margin: 0 0 4px;
+}
+
+.vc-storySub{
+  margin:0;
+  color: rgba(234,241,255,.72);
+}
+
+.vc-storyMeta{
+  margin-top:8px;
+  color: rgba(234,241,255,.60);
+  font-size:.92rem;
+}
+
+/* =========================
+   In-Game HUD + Content
+   ========================= */
+
+.vc-hud{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 14px 14px 12px;
+  backdrop-filter: blur(10px);
+}
+
+.vc-hudInner{
+  border-radius: var(--radius-lg);
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18)),
+    linear-gradient(180deg, rgba(9,28,44,.92), rgba(6,15,26,.92));
+  box-shadow: 0 18px 42px rgba(0,0,0,.35);
+  padding: 14px;
+}
+
+.vc-hudTitle{
+  margin:0 0 6px;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.vc-hudSub{
+  margin:0 0 12px;
+  color: rgba(234,241,255,.65);
+  font-size: .95rem;
+}
+
+.vc-bars{
+  display:grid;
+  gap:10px;
+  margin-bottom: 12px;
+}
+
+.vc-barRow{
+  display:grid;
+  grid-template-columns: 44px 1fr 86px;
+  align-items:center;
+  gap:10px;
+}
+
+.vc-barLabel{
+  font-weight: 800;
+  color: rgba(234,241,255,.75);
+}
+
+.vc-bar{
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.28);
+  border:1px solid rgba(255,255,255,.08);
+  overflow:hidden;
+}
+
+.vc-barFill{
+  height:100%;
+  width: 50%;
+  border-radius:999px;
+  background: linear-gradient(90deg, rgba(255,120,120,.95), rgba(242,208,138,.95));
+}
+
+.vc-barFill--xp{
+  background: linear-gradient(90deg, rgba(120,220,255,.65), rgba(120,220,255,.25));
+}
+
+.vc-barVal{
+  text-align:right;
+  font-weight: 800;
+  color: rgba(234,241,255,.80);
+}
+
+/* HUD buttons: same carved style but smaller */
+.vc-hudBtns{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:10px;
+}
+
+.vc-hudBtns .vc-btn{
+  padding: 12px 12px;
+  font-size: .78rem;
+  letter-spacing:.10em;
+}
+
+.vc-hudBtns2{
+  margin-top:10px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+
+/* Main content */
+.vc-content{
+  padding: 14px 14px 24px;
+}
+
+.vc-scene{
+  border-radius: var(--radius-lg);
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18)),
+    linear-gradient(180deg, rgba(8,22,36,.92), rgba(6,14,24,.92));
+  box-shadow: 0 14px 34px rgba(0,0,0,.30);
+  padding: 16px;
+  margin-bottom: 14px;
+  text-align:center;
+}
+
+.vc-sceneTitle{
+  margin: 0 0 6px;
+  font-weight: 900;
+  letter-spacing:.06em;
+}
+
+.vc-sceneSub{
+  margin:0;
+  color: rgba(234,241,255,.60);
+}
+
+.vc-storyText{
+  border-radius: var(--radius-lg);
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18)),
+    linear-gradient(180deg, rgba(7,18,30,.92), rgba(5,12,22,.92));
+  box-shadow: 0 14px 34px rgba(0,0,0,.30);
+  padding: 18px;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.vc-choices{
+  margin-top: 14px;
+  display:grid;
+  gap:12px;
+}
+
+.vc-choiceBtn{
+  text-align:left;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border:1px solid rgba(242,208,138,.20);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18)),
+    linear-gradient(180deg, rgba(10,30,46,.92), rgba(6,14,24,.92));
+  color: rgba(234,241,255,.92);
+  box-shadow: 0 12px 28px rgba(0,0,0,.30);
+}
+
+.vc-choiceBtn:active{
+  transform: translateY(1px);
+}
+
+/* Modal / sheets */
+.vc-modalScrim{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  z-index: 50;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 18px;
+}
+
+.vc-modal{
+  width: min(var(--maxw), calc(100vw - 36px));
+  border-radius: var(--radius-lg);
+  border:1px solid rgba(255,255,255,.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.20)),
+    linear-gradient(180deg, rgba(7,18,30,.96), rgba(5,12,22,.96));
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+  overflow:hidden;
+}
+
+.vc-modalHead{
+  padding: 14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.vc-modalTitle{
+  margin:0;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.vc-close{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(234,241,255,.9);
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+
+.vc-modalBody{
+  padding: 14px 16px 18px;
+  max-height: 70vh;
+  overflow:auto;
+}
+
+/* Small screens: tighten spacing slightly */
+@media (max-width: 380px){
+  .vc-wrap{ width: calc(100vw - 20px); }
+  .vc-btn{ padding: 13px 16px; }
+  .vc-storyText{ font-size: 1.02rem; }
+}
