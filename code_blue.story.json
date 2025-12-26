@@ -1,0 +1,19 @@
+{
+  "title": "Code Blue",
+  "subtitle": "A Hospital Romance Demo",
+  "start": "start",
+  "sections": {
+    "start": {
+      "text": "The fluorescent lights hum. Your pager vibrates. Someone says your name like it matters.",
+      "choices": [
+        { "text": "Continue", "to": "next" }
+      ]
+    },
+    "next": {
+      "text": "A patient chart waits. A glance across the hall lingers a second too long.\n\nThis is where we’ll build the full 100+ section demo next.",
+      "choices": [
+        { "text": "Return To Main Menu", "to": "start" }
+      ]
+    }
+  }
+}
