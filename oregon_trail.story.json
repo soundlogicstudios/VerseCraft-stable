@@ -1,0 +1,19 @@
+{
+  "title": "Oregon Trail",
+  "subtitle": "A Short Survival Run",
+  "start": "start",
+  "sections": {
+    "start": {
+      "text": "A wagon creaks. A river glitters ahead. The sky looks honest—until it doesn’t.",
+      "choices": [
+        { "text": "Continue", "to": "next" }
+      ]
+    },
+    "next": {
+      "text": "This will become a tight survival demo with item pressure, small HP losses, and smart consumable use.",
+      "choices": [
+        { "text": "Return To Main Menu", "to": "start" }
+      ]
+    }
+  }
+}
