@@ -1,0 +1,213 @@
+{
+  "id": "lorecraft_tutorial",
+  "title": "Lorecraft Tutorial",
+  "subtitle": "The World That Notices",
+  "start": "S01",
+  "module": {
+    "primaryResource": { "name": "HP", "min": 0, "max": 15, "failureSectionId": "DEATH" },
+    "notes": [
+      "Tutorial story demonstrating HP, inventory, equipment, special-item interactions, and multiple ending types.",
+      "Revisits advance narrative state via flags; no infinite loops.",
+      "Narrative avoids explicit enumeration of hidden requirements."
+    ]
+  },
+  "sections": [
+    {
+      "id": "S01",
+      "text": "Moonlight breaks on shattered stone. The ruin’s entrance yawns like a cracked jaw, its archway half-swallowed by ivy and time.\n\nYou came because the local road has gone quiet—and because something in the dark has started paying attention.\n\nYour candle burns steady, as if it wants to be seen.",
+      "system": "Tutorial: Your choices move the story. Consequences can change HP, inventory, and flags.",
+      "choices": [
+        { "label": "Step into the ruin", "to": "S02", "effects": [{ "xp": 1 }] },
+        { "label": "Circle the entrance and scout for danger", "to": "S03", "effects": [{ "xp": 2 }, { "setFlag": "ScoutedEntrance" }] }
+      ]
+    },
+    {
+      "id": "S02",
+      "text": "You cross the threshold.\n\nDust puffs under your boots. A corridor stretches forward—collapsed in places, but passable. Your candlelight catches carvings worn smooth by centuries.\n\nSomewhere deeper, water drips… then stops.",
+      "choices": [
+        { "label": "Take the corridor straight ahead", "to": "S04", "effects": [{ "xp": 1 }, { "setFlag": "EnteredRuin" }] },
+        { "label": "Try the side door with a faded chapel sigil", "to": "S05", "effects": [{ "xp": 1 }] }
+      ]
+    },
+    {
+      "id": "S03",
+      "text": "You circle the archway. The stone here is newer—repairs made long after the ruin fell.\n\nYou find scuffed footprints in the dirt. Fresh. Not yours.\n\nNear the threshold, a thin wire glints faintly.",
+      "system": "Careful observation can change outcomes.",
+      "choices": [
+        { "label": "Disarm the wire and enter carefully", "to": "S04", "effects": [{ "xp": 3 }, { "setFlag": "DisarmedTrap" }] },
+        { "label": "Enter immediately", "to": "S04", "effects": [{ "xp": 1 }] }
+      ]
+    },
+    {
+      "id": "S04",
+      "text": "The corridor narrows.\n\nA stone plate shifts under your weight.\n\nA dart snaps from the wall and bites into your shoulder.\n\nPain blooms hot, then cold.",
+      "system": "HP -3.",
+      "choices": [
+        { "label": "Rip the dart free and keep moving", "to": "S06", "effects": [{ "hp": -3 }, { "xp": 2 }] },
+        {
+          "label": "Spot the mechanism in time and avoid the dart",
+          "to": "S06",
+          "requires": { "flag": "DisarmedTrap" },
+          "effects": [{ "xp": 3 }, { "setFlag": "AvoidedFirstTrap" }]
+        },
+        {
+          "label": "Stop and apply a Bandage",
+          "to": "S07",
+          "requires": { "hasItem": { "category": "consumables", "id": "bandage" } },
+          "effects": [
+            { "hp": -3 },
+            { "removeItem": { "category": "consumables", "id": "bandage", "qty": 1 } },
+            { "hp": 3 },
+            { "xp": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "text": "The side door groans open.\n\nInside is a narrow chapel—collapsed roof, shattered altar, and a single iron reliquary left intact.\n\nYour candle flame leans toward it.",
+      "system": "Some objects respond to presence rather than force.",
+      "choices": [
+        { "label": "Examine the reliquary", "to": "S08", "effects": [{ "xp": 2 }] },
+        { "label": "Return to the corridor", "to": "S06", "effects": [{ "xp": 1 }] }
+      ]
+    },
+    {
+      "id": "S06",
+      "text": "The corridor opens into a fractured hall.\n\nBroken pillars. Smashed mosaics.\n\nA dark pool sits at the center like spilled ink.\n\nSomething scrapes across stone.",
+      "choices": [
+        { "label": "Hide behind a broken pillar", "to": "S09", "effects": [{ "xp": 2 }] },
+        { "label": "Approach the sound carefully", "to": "S10", "effects": [{ "xp": 2 }] },
+        { "label": "Back away toward the chapel", "to": "S05", "effects": [{ "xp": 1 }] }
+      ]
+    },
+    {
+      "id": "S07",
+      "text": "You bind the wound and steady your breathing.\n\nThe pain dulls.\n\nNot gone—managed.",
+      "system": "Healing cannot exceed Max HP.",
+      "choices": [
+        { "label": "Continue into the hall", "to": "S06", "effects": [{ "xp": 1 }] }
+      ]
+    },
+    {
+      "id": "S08",
+      "text": "The reliquary opens with a soft click.\n\nInside rests a small charm etched with looping runes.\n\nIt feels deliberate.\n\nLike a mark of recognition.",
+      "choices": [
+        {
+          "label": "Take the charm",
+          "to": "S11",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "warden_sigil",
+                "name": "Warden Sigil",
+                "qty": 1,
+                "value": 100,
+                "equipSlot": "special"
+              }
+            },
+            { "setFlag": "HasSigil" },
+            { "xp": 4 }
+          ]
+        },
+        { "label": "Leave it and step away", "to": "S06", "effects": [{ "xp": 1 }] }
+      ]
+    },
+    {
+      "id": "S09",
+      "text": "A cave-wight slides into view.\n\nThin limbs. Pale eyes.\n\nIt sniffs the air.\n\nYou are not seen. Yet.",
+      "choices": [
+        { "label": "Hold still and wait", "to": "S12", "effects": [{ "xp": 2 }, { "setFlag": "EvadedWight" }] },
+        { "label": "Strike while it searches", "to": "S13", "effects": [{ "xp": 2 }] }
+      ]
+    },
+    {
+      "id": "S10",
+      "text": "The wight turns.\n\nToo fast.\n\nIts claw grazes your side as you recoil.",
+      "system": "HP -2.",
+      "choices": [
+        { "label": "Fall back", "to": "S14", "effects": [{ "hp": -2 }, { "xp": 2 }] },
+        { "label": "Hold your ground", "to": "S13", "effects": [{ "hp": -1 }, { "xp": 3 }] }
+      ]
+    },
+
+    {
+      "id": "S54",
+      "text": "You raise the candle.\n\nThe flame does not flare.\n\nIt tightens—focused, almost restrained.\n\nFor a moment, the stone seems thinner here, as if something on the other side is listening but not yet answering.\n\nWhatever this place expects, it is not finished with you.",
+      "system": "Some interactions respond differently after certain experiences.",
+      "choices": [
+        { "label": "Step back and reconsider", "to": "S50", "effects": [{ "xp": 1 }] }
+      ]
+    },
+
+    {
+      "id": "S58",
+      "text": "You stand before the sealed door.\n\nIt does not threaten you.\n\nIt waits.\n\nYou sense that forcing it would work—but only in the way storms work.\n\nThere is another way.\n\nOne that feels deliberate.\n\nChosen.\n\nYou can try now.\n\nOr you can leave with your life.",
+      "choices": [
+        {
+          "label": "Attempt to complete what the ruin is waiting for",
+          "to": "S59",
+          "requires": { "flag": "SigilOnFinalDoor" },
+          "effects": [{ "xp": 2 }]
+        },
+        {
+          "label": "Force the door with brute strength",
+          "to": "S60",
+          "effects": [{ "hp": -6 }, { "xp": 2 }]
+        },
+        {
+          "label": "Leave while you still can",
+          "to": "GOOD_END",
+          "effects": [{ "xp": 2 }]
+        }
+      ]
+    },
+
+    {
+      "id": "S59",
+      "text": "The door opens.\n\nNot like stone parting.\n\nLike breath being released after centuries.\n\nInside, names line the walls.\n\nYou add yours.\n\nThe ruin accepts you.\n\nFor now.",
+      "system": "GOOD ENDING.",
+      "choices": [
+        { "label": "Return To Main Menu", "toMenu": true }
+      ]
+    },
+    {
+      "id": "S60",
+      "text": "You hurl yourself against the stone.\n\nIt yields.\n\nBut something yields back.\n\nA presence.\n\nA hand.\n\nToo long.\n\nToo patient.",
+      "system": "HP -6.",
+      "choices": [
+        { "label": "Stagger away alive", "to": "BAD_END", "effects": [{ "xp": 2 }] },
+        { "label": "Your strength fails", "to": "DEATH", "effects": [{ "hp": -99 }] }
+      ]
+    },
+    {
+      "id": "GOOD_END",
+      "text": "You leave the ruin alive.\n\nNot victorious.\n\nBut intact.\n\nSometimes survival is enough.",
+      "choices": [
+        { "label": "Return To Main Menu", "toMenu": true }
+      ]
+    },
+    {
+      "id": "BAD_END",
+      "text": "You escape.\n\nBut the ruin remembers you.\n\nAnd memory is a kind of chain.",
+      "choices": [
+        { "label": "Return To Main Menu", "toMenu": true }
+      ]
+    },
+    {
+      "id": "SPECIAL_END",
+      "text": "You leave with no treasure.\n\nOnly understanding.\n\nIn Lorecraft, that counts.",
+      "choices": [
+        { "label": "Return To Main Menu", "toMenu": true }
+      ]
+    },
+    {
+      "id": "DEATH",
+      "text": "Your strength gives out.\n\nThe ruin waits.\n\nStone always does.",
+      "choices": [
+        { "label": "Return To Main Menu", "toMenu": true }
+      ]
+    }
+  ]
+}
