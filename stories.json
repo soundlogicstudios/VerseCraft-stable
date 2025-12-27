@@ -1,0 +1,55 @@
+{
+  "defaultStoryId": "lorecraft_tutorial",
+  "stories": [
+    {
+      "id": "lorecraft_tutorial",
+      "title": "Lorecraft Tutorial",
+      "subtitle": "The World That Notices",
+      "tags": ["Tutorial"],
+      "estimate": "5–10 min",
+      "file": "lorecraft_tutorial.story.json",
+      "thumb": "",
+      "resourceLabel": "HP"
+    },
+    {
+      "id": "code_blue",
+      "title": "Code Blue",
+      "subtitle": "A Hospital Romance",
+      "tags": ["Romance", "Drama"],
+      "estimate": "5–10 min",
+      "file": "code_blue.story.json",
+      "thumb": "",
+      "resourceLabel": "Reputation"
+    },
+    {
+      "id": "oregon_trail",
+      "title": "Oregon Trail",
+      "subtitle": "A Short Survival Run",
+      "tags": ["Survival"],
+      "estimate": "5–10 min",
+      "file": "oregon_trail.story.json",
+      "thumb": "",
+      "resourceLabel": "HP"
+    },
+    {
+      "id": "wasteland",
+      "title": "Wasteland",
+      "subtitle": "Dust And Decisions",
+      "tags": ["Survival", "RPG"],
+      "estimate": "5–10 min",
+      "file": "wasteland.story.json",
+      "thumb": "",
+      "resourceLabel": "HP"
+    },
+    {
+      "id": "crimson_seagull",
+      "title": "The Crimson Seagull And The Burning Ember Crown",
+      "subtitle": "A Pirate CYOARPG",
+      "tags": ["Adventure", "Pirate"],
+      "estimate": "5–10 min",
+      "file": "crimson_seagull.story.json",
+      "thumb": "",
+      "resourceLabel": "HP"
+    }
+  ]
+}
