@@ -563,7 +563,7 @@ function renderHome(){
             <img src="assets/versecraft-logo.png" alt="VerseCraft Logo" />
           </div>
 
-          <div class="vc-tagline">Choose Your Paths. Live Your Story.</div>
+          <div class="vc-tagline">Your choices. Your RPG. Your Story.</div>
 
           <button class="vc-btn" id="btnTapStart">Tap To Start</button>
           <button class="vc-btn" id="btnStoryPicker">Load New Story</button>
