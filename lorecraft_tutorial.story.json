@@ -1,0 +1,104 @@
+{
+  "id": "lorecraft_tutorial",
+  "title": "Lorecraft Tutorial",
+  "subtitle": "The World That Notices",
+  "start": "START",
+  "module": {
+    "primaryResource": {
+      "name": "HP",
+      "min": 0,
+      "max": 15,
+      "failureSectionId": "DEATH"
+    },
+    "slotLabels": {
+      "weapon": "Weapon",
+      "armor": "Armor",
+      "special": "Special Item"
+    },
+    "loadout": {
+      "weapon": {
+        "id": "rusty_dagger",
+        "name": "Rusty Dagger",
+        "category": "weapons"
+      },
+      "armor": {
+        "id": "leather_jerkin",
+        "name": "Leather Jerkin",
+        "category": "armor"
+      },
+      "special": {
+        "id": "candle_token",
+        "name": "Candle",
+        "category": "special"
+      }
+    }
+  },
+  "sections": {
+    "START": {
+      "text": "Moonlight breaks on shattered stone. The ruin\u2019s entrance yawns like a cracked jaw, half-swallowed by ivy and time.\n\nYou came because the road has gone quiet\u2014and because something in the dark has started paying attention.\n\nYour candle burns steady, as if it wants to be seen.",
+      "choices": [
+        {
+          "label": "Step into the ruin",
+          "to": "ENTER_RUIN"
+        },
+        {
+          "label": "Circle the entrance and scout for danger",
+          "to": "SCOUT"
+        }
+      ]
+    },
+    "ENTER_RUIN": {
+      "text": "You cross the threshold. The air cools, and the sound of the world outside dulls.\n\nSomewhere deeper inside, stone shifts.",
+      "system": "The world reacts to decisive action.",
+      "choices": [
+        {
+          "label": "Advance carefully",
+          "to": "HALLWAY"
+        },
+        {
+          "label": "Raise your weapon and press forward",
+          "to": "HALLWAY"
+        }
+      ]
+    },
+    "SCOUT": {
+      "text": "You move slowly around the ruin\u2019s perimeter. Scratches mar the stone\u2014recent.\n\nWhatever lives here knows this place well.",
+      "system": "Caution can reveal hidden details.",
+      "choices": [
+        {
+          "label": "Enter the ruin with caution",
+          "to": "ENTER_RUIN"
+        }
+      ]
+    },
+    "HALLWAY": {
+      "text": "The hallway stretches ahead, lined with collapsed pillars. Your footsteps echo despite your care.",
+      "choices": [
+        {
+          "label": "Continue onward",
+          "to": "END_TUTORIAL"
+        }
+      ]
+    },
+    "END_TUTORIAL": {
+      "text": "You feel it now\u2014the sense that the world is watching, waiting to respond to your next choice.\n\nThis is only the beginning.",
+      "system": "Tutorial complete. Your choices will shape what comes next.",
+      "choices": [
+        {
+          "label": "Return to Main Menu",
+          "toMenu": true
+        }
+      ]
+    },
+    "DEATH": {
+      "text": "Your strength fails you, and the darkness closes in.\n\nThis world does not forgive careless steps.",
+      "system": "When HP reaches zero, the run ends.",
+      "choices": [
+        {
+          "label": "Return to Main Menu",
+          "toMenu": true
+        }
+      ]
+    }
+  }
+}
