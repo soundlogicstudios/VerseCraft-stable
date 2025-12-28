@@ -1,0 +1,2600 @@
+{
+  "id": "oregon_trail_painted_sky",
+  "title": "Oregon Trail: The Painted Sky",
+  "start": "1",
+  "module": {
+    "primaryResource": {
+      "name": "HP",
+      "min": 0,
+      "max": 15,
+      "failureSectionId": "TRAIL_DEATH"
+    },
+    "slotLabels": {
+      "weapon": "Tool",
+      "armor": "Clothing",
+      "special": "Item"
+    },
+    "loadout": {
+      "weapon": {
+        "id": "long_range_rifle",
+        "name": "Long-Range Rifle"
+      },
+      "armor": {
+        "id": "repaired_clothing",
+        "name": "Repaired Clothing"
+      },
+      "special": {
+        "id": "family_keepsake",
+        "name": "Family Keepsake"
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "1",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "2",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "2",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "3",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "3",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "4",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "4",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "5",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "5",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "6",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "6",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "7",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "7",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "8",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "8",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "9",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "9",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "9",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "10",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "10",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "11",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "11",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "12",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "12",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "13",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "13",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "14",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "14",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "15",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "15",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "16",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "16",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "17",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "17",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "17",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "18",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "18",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "19",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "19",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "20",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "20",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "21",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "21",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "22",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "22",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "23",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "23",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "24",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "24",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "25",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "25",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "25",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "26",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "26",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "27",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "27",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "28",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "28",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "29",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "29",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "30",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "30",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "31",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "31",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "32",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "32",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "33",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "33",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "33",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "34",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "34",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "35",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "35",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "36",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "36",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "37",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "37",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "38",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "38",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "39",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "39",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "40",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "40",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "41",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "41",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "41",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "42",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "42",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "43",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "43",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "44",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "44",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "45",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "45",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "46",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "46",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "47",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "47",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "48",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "48",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "49",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "49",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "49",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "50",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "50",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "51",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "51",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "52",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "52",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "53",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "53",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "54",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "54",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "55",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "55",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "56",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "56",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "57",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "57",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "57",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "58",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "58",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "59",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "59",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "60",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "60",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "61",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "61",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "62",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "62",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "62",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "63",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "63",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "64",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "64",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "65",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "65",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "65",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "66",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "66",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "66",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "67",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "67",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "68",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "68",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "68",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "69",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "69",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "69",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "70",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "70",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "70",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "71",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "71",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "71",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "72",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "72",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "73",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "73",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "73",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "74",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "74",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "74",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "75",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "75",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "76",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "76",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "76",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "77",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "77",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "77",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "78",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "78",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "78",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "79",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "79",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "79",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "80",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "80",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "81",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "81",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "81",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "81",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "82",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "82",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "82",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "83",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "83",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "83",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "84",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "84",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "84",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "85",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "85",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "85",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "86",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "86",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "87",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "87",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "87",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "88",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "88",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "88",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "89",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "89",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "89",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "89",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "90",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "90",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "90",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "91",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "91",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "91",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "92",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "92",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "92",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "93",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "93",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "93",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "94",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "94",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "94",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "95",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "95",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "95",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "96",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "96",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "96",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "97",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "97",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Search for supplies along the trail.",
+          "to": "97",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "rations",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "97",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "98",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "98",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "98",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "99",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "99",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "99",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "100",
+      "text": "The trail stretches ahead beneath a painted sky.\n\nEach mile costs something—food, strength, or resolve. You watch your companions carefully, knowing not all of you may finish the journey.",
+      "choices": [
+        {
+          "label": "Press on despite the strain.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Slow the pace and care for the group.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TRAIL_DEATH",
+      "text": "The journey ends beneath a wide and unforgiving sky.\n\nThose lost along the trail are remembered by the land itself, their stories carried forward by anyone who survived long enough to tell them.",
+      "choices": [
+        {
+          "label": "Return to Main Menu",
+          "toMenu": true
+        }
+      ]
+    }
+  ]
+}
