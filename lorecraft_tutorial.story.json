@@ -4,35 +4,48 @@
   "subtitle": "The World That Notices",
   "start": "START",
   "module": {
-    "primaryResource": {
-      "name": "HP",
-      "min": 0,
-      "max": 15,
-      "failureSectionId": "DEATH"
-    },
-    "slotLabels": {
-      "weapon": "Weapon",
-      "armor": "Armor",
-      "special": "Special Item"
-    },
-    "loadout": {
-      "weapon": {
-        "id": "rusty_dagger",
-        "name": "Rusty Dagger",
-        "category": "weapons"
-      },
-      "armor": {
-        "id": "leather_jerkin",
-        "name": "Leather Jerkin",
-        "category": "armor"
-      },
-      "special": {
-        "id": "candle_token",
-        "name": "Candle",
-        "category": "special"
-      }
-    }
+  "primaryResource": { "name": "HP", "min": 0, "max": 15, "failureSectionId": "DEATH" },
+  "slotLabels": { "weapon": "Weapon", "armor": "Armor", "special": "Special Item" },
+  "loadout": {
+    "weapon": { "id": "rusty_dagger", "name": "Rusty Dagger", "category": "weapons" },
+    "armor": { "id": "traveler_cloak", "name": "Traveler Cloak", "category": "armor" },
+    "special": { "id": "candle_stub", "name": "Candle", "category": "special" }
   },
+  "itemCatalog": {
+    "consumables": [
+      { "id": "bandage", "name": "Bandage", "value": 15, "use": { "type": "heal", "amount": 3 } },
+      { "id": "herb_poultice", "name": "Herb Poultice", "value": 25, "use": { "type": "heal", "amount": 4 } },
+      { "id": "glimmer_tonic", "name": "Glimmer Tonic", "value": 45, "use": { "type": "heal", "amount": 5 } },
+      { "id": "antitoxin_draught", "name": "Antitoxin Draught", "value": 35, "use": { "type": "story", "tag": "CuredPoison" } }
+    ],
+    "items": [
+      { "id": "chalk", "name": "Chalk", "value": 5, "use": { "type": "story", "tag": "MarkedTrail" } },
+      { "id": "candle_resin", "name": "Candle Resin", "value": 10, "use": { "type": "story", "tag": "BrightCandle" } },
+      { "id": "iron_key", "name": "Iron Key", "value": 20, "use": { "type": "story", "tag": "HasKey" } },
+      { "id": "wax_token", "name": "Wax Token", "value": 60, "use": { "type": "story", "tag": "HasWaxToken" } }
+    ],
+    "weapons": [
+      { "id": "rusty_dagger", "name": "Rusty Dagger", "value": 10, "equipSlot": "weapon" },
+      { "id": "warden_knife", "name": "Warden Knife", "value": 60, "equipSlot": "weapon" },
+      { "id": "cold_iron_dirk", "name": "Cold Iron Dirk", "value": 85, "equipSlot": "weapon" }
+    ],
+    "armor": [
+      { "id": "traveler_cloak", "name": "Traveler Cloak", "value": 10, "equipSlot": "armor" },
+      { "id": "battered_buckler", "name": "Battered Buckler", "value": 35, "equipSlot": "armor" },
+      { "id": "warden_vambrace", "name": "Warden Vambrace", "value": 75, "equipSlot": "armor" }
+    ],
+    "special": [
+      { "id": "candle_stub", "name": "Candle", "value": 5, "equipSlot": "special" },
+      { "id": "warden_sigil", "name": "Warden Sigil", "value": 100, "equipSlot": "special" },
+      { "id": "lens_of_embers", "name": "Lens Of Embers", "value": 120, "equipSlot": "special" }
+    ]
+  },
+  "notes": [
+    "Lorecraft reference module: rich narrative, inventory-driven progression, and stateful revisits.",
+    "Conditional choices must remain diegetic; item names only appear when the player already has them.",
+    "Choice.requires supports flag, notFlag, hasItem."
+  ]
+},
   "sections": {
     "START": {
       "text": "Moonlight breaks on shattered stone. The ruin\u2019s entrance yawns like a cracked jaw, half-swallowed by ivy and time.\n\nYou came because the road has gone quiet\u2014and because something in the dark has started paying attention.\n\nYour candle burns steady, as if it wants to be seen.",
