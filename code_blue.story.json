@@ -1,0 +1,3934 @@
+{
+  "title": "Code Blue",
+  "start": "1",
+  "module": {
+    "slotLabels": {
+      "weapon": "Tool",
+      "armor": "Scrubs",
+      "special": "Access Item"
+    },
+    "primaryResource": {
+      "name": "Reputation",
+      "min": -5,
+      "max": 5,
+      "failureSectionId": "MALPRACTICE_ARREST"
+    },
+    "loadout": {
+      "weapon": {
+        "id": "StandardStethoscope",
+        "name": "Standard Stethoscope",
+        "category": "weapons"
+      },
+      "armor": {
+        "id": "NewScrubs",
+        "name": "New Scrubs",
+        "category": "armor"
+      },
+      "special": {
+        "id": "PocketReferenceGuide",
+        "name": "Pocket Reference Guide",
+        "category": "special"
+      }
+    },
+    "itemSet": {
+      "defined": true
+    }
+  },
+  "sections": [
+    {
+      "id": "1",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "3",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ICUAccessBadge",
+                "name": "ICU Access Badge",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "5",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ],
+      "system": "Choices shape reputation and access."
+    },
+    {
+      "id": "2",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "3",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "name": "Incident Report Copy",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "5",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "5",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "OnCallKeycard",
+                "name": "On Call Keycard",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "7",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "5",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "VolunteerRibbon",
+                "name": "Volunteer Ribbon",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "6",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "8",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "GalaTicket",
+                "name": "Gala Ticket",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "7",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "NewScrubs",
+                "name": "New Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "9",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "HospitalMap",
+                "name": "Hospital Map",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "10",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "10",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "EnergyGel",
+                "name": "Energy Gel",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "11",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "12",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "9",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "MintPacket",
+                "name": "Mint Packet",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "mintedBreath"
+                }
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "10",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "12",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "MintPacket",
+                "name": "Mint Packet",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "mintedBreath"
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "13",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "12",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "FaceShield",
+                "name": "Face Shield",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "13",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "DischargeChecklist",
+                "name": "Discharge Checklist",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "12",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "NightShiftScrubs",
+                "name": "Night Shift Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "14",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Ask for the right tool before starting.",
+          "to": "13",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "15",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "NewScrubs",
+                "name": "New Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "14",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "15",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "MintPacket",
+                "name": "Mint Packet",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "mintedBreath"
+                }
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "17",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "15",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "SurgicalScrubs",
+                "name": "Surgical Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "16",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "19",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "16",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "VolunteerRibbon",
+                "name": "Volunteer Ribbon",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "17",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "PatientNote",
+                "name": "Patient Note",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "18",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "VolunteerRibbon",
+                "name": "Volunteer Ribbon",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "20",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "text": "An ICU door closes with authority. Access matters here.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "20",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "KimberlyLanyard",
+                "name": "Kimberly Lanyard",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "19",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "21",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "GalaTicket",
+                "name": "Gala Ticket",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "22",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "21",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "CoffeeToken",
+                "name": "Coffee Token",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "22",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "22",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "RestrictedWingPass",
+                "name": "Restricted Wing Pass",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "23",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "OnCallKeycard",
+                "name": "On Call Keycard",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "22",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "HospitalMap",
+                "name": "Hospital Map",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "24",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "26",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "23",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "NightShiftScrubs",
+                "name": "Night Shift Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "25",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Ask Kimberly how she\u2019s holding up.",
+          "to": "24",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "text": "A trauma bay snaps into focus. Orders fly. Someone counts. Someone listens for breath.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "25",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "name": "Incident Report Copy",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "27",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "27",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "OnCallKeycard",
+                "name": "On Call Keycard",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "28",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "27",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "CoffeeToken",
+                "name": "Coffee Token",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "29",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "AntisepticWipes",
+                "name": "Antiseptic Wipes",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "cleanStart"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "system": "Choices shape reputation and access."
+    },
+    {
+      "id": "26",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "28",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "AntisepticWipes",
+                "name": "Antiseptic Wipes",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "cleanStart"
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "29",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "29",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "NewScrubs",
+                "name": "New Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "30",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "31",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ComfortShoes",
+                "name": "Comfort Shoes",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "32",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "33",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "32",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "N95Mask",
+                "name": "N95 Mask",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "31",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "32",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "HospitalMap",
+                "name": "Hospital Map",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "33",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "PocketReferenceGuide",
+                "name": "Pocket Reference Guide",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "33",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "AntisepticWipes",
+                "name": "Antiseptic Wipes",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "cleanStart"
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "34",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "34",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ICUAccessBadge",
+                "name": "ICU Access Badge",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "35",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "35",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "N95Mask",
+                "name": "N95 Mask",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "36",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Ask Marlowe a quiet question off to the side.",
+          "to": "35",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "text": "An ICU door closes with authority. Access matters here.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "35",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ResearchPager",
+                "name": "Research Pager",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "37",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "text": "A trauma bay snaps into focus. Orders fly. Someone counts. Someone listens for breath.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "37",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "HandCream",
+                "name": "Hand Cream",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "steadyHands"
+                }
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "38",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "AntisepticWipes",
+                "name": "Antiseptic Wipes",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "cleanStart"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "40",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "37",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "RestrictedWingPass",
+                "name": "Restricted Wing Pass",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "39",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "39",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "HandCream",
+                "name": "Hand Cream",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "steadyHands"
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "40",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "40",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "PocketReferenceGuide",
+                "name": "Pocket Reference Guide",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "42",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "text": "An ICU door closes with authority. Access matters here.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "40",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "CardioStethoscope",
+                "name": "Cardio Stethoscope",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "41",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "41",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "StandardStethoscope",
+                "name": "Standard Stethoscope",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "44",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "DischargeChecklist",
+                "name": "Discharge Checklist",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "42",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ComfortShoes",
+                "name": "Comfort Shoes",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "45",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "text": "A trauma bay snaps into focus. Orders fly. Someone counts. Someone listens for breath.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "44",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "OnCallKeycard",
+                "name": "On Call Keycard",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "45",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "47",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "46",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ERJacket",
+                "name": "ER Jacket",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "47",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "text": "An ICU door closes with authority. Access matters here.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "46",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "name": "Incident Report Copy",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "47",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Handle it verbally and move on.",
+          "to": "46",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "47",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ResearchPager",
+                "name": "Research Pager",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "48",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "BandageWrap",
+                "name": "Bandage Wrap",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "bandagedUp"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "47",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ChargeNurseOverride",
+                "name": "Charge Nurse Override",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "49",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "48",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "ProteinBar",
+                "name": "Protein Bar",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "50",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "text": "A trauma bay snaps into focus. Orders fly. Someone counts. Someone listens for breath.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "49",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "RestrictedWingPass",
+                "name": "Restricted Wing Pass",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "52",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "52",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "OnCallKeycard",
+                "name": "On Call Keycard",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "53",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "54",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "53",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ThankYouPin",
+                "name": "Thank You Pin",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "52",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "VitalsClipboard",
+                "name": "Vitals Clipboard",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            }
+          ]
+        }
+      ],
+      "system": "Choices shape reputation and access."
+    },
+    {
+      "id": "51",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "53",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "PocketReferenceGuide",
+                "name": "Pocket Reference Guide",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "55",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "55",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "HospitalMap",
+                "name": "Hospital Map",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "56",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "text": "A trauma bay snaps into focus. Orders fly. Someone counts. Someone listens for breath.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "56",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "SurgicalScrubs",
+                "name": "Surgical Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "57",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "56",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ComfortShoes",
+                "name": "Comfort Shoes",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "57",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "58",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ICUFlowers",
+                "name": "ICU Flowers",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "57",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "MintPacket",
+                "name": "Mint Packet",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "mintedBreath"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "label": "Ask Marlowe a quiet question off to the side.",
+          "to": "57",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "text": "A trauma bay snaps into focus. Orders fly. Someone counts. Someone listens for breath.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "57",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "SutureKit",
+                "name": "Suture Kit",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "60",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "61",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "58",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "HospitalMap",
+                "name": "Hospital Map",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "60",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "59",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "FaceShield",
+                "name": "Face Shield",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "61",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "62",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ThankYouPin",
+                "name": "Thank You Pin",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "63",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "61",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "CardioStethoscope",
+                "name": "Cardio Stethoscope",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "63",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "AlexKeyring",
+                "name": "Alex Keyring",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "62",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "HandCream",
+                "name": "Hand Cream",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "steadyHands"
+                }
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "63",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "62",
+      "text": "An ICU door closes with authority. Access matters here.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "65",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "LockerKey",
+                "name": "Locker Key",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "66",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "66",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "StandardStethoscope",
+                "name": "Standard Stethoscope",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "67",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "68",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "65",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "CoffeeToken",
+                "name": "Coffee Token",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "67",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "text": "A trauma bay snaps into focus. Orders fly. Someone counts. Someone listens for breath.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "66",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "KimberlyLanyard",
+                "name": "Kimberly Lanyard",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "67",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "SutureKit",
+                "name": "Suture Kit",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "66",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "67",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "EnergyGel",
+                "name": "Energy Gel",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "70",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask Kimberly how she\u2019s holding up.",
+          "to": "68",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "70",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "VolunteerRibbon",
+                "name": "Volunteer Ribbon",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "71",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "68",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "69",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "SutureKit",
+                "name": "Suture Kit",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "71",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "69",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "70",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "BandageWrap",
+                "name": "Bandage Wrap",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "bandagedUp"
+                }
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "73",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "70",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "73",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "TraumaShears",
+                "name": "Trauma Shears",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "74",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "KimberlyLanyard",
+                "name": "Kimberly Lanyard",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "75",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "71",
+      "text": "An ICU door closes with authority. Access matters here.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "73",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "PulseOximeter",
+                "name": "Pulse Oximeter",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "75",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "text": "An ICU door closes with authority. Access matters here.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "75",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "TraumaShears",
+                "name": "Trauma Shears",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "74",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Stay with the patient and explain what\u2019s happening.",
+          "to": "76",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "LabSlip",
+                "name": "Lab Slip",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask a colleague to confirm before proceeding.",
+          "to": "77",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "74",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "77",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ThankYouPin",
+                "name": "Thank You Pin",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "78",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "78",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "SalineFlush",
+                "name": "Saline Flush",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "lineClear"
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "77",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "EnergyGel",
+                "name": "Energy Gel",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "system": "Choices shape reputation and access."
+    },
+    {
+      "id": "76",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "79",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ERJacket",
+                "name": "ER Jacket",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "78",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "77",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "78",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "TraumaShears",
+                "name": "Trauma Shears",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "79",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "82",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "78",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "81",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "CoffeeToken",
+                "name": "Coffee Token",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "82",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "79",
+      "text": "An ICU door closes with authority. Access matters here.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "80",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "PocketReferenceGuide",
+                "name": "Pocket Reference Guide",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "82",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "text": "An ICU door closes with authority. Access matters here.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "83",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "TraumaShears",
+                "name": "Trauma Shears",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "84",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "Penlight",
+                "name": "Penlight",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "81",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "84",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "StandardStethoscope",
+                "name": "Standard Stethoscope",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "85",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "82",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "85",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "NewScrubs",
+                "name": "New Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "84",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "83",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "84",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "SurgicalScrubs",
+                "name": "Surgical Scrubs",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "85",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "84",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "87",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "VolunteerRibbon",
+                "name": "Volunteer Ribbon",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "88",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "89",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "85",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "87",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "BandageWrap",
+                "name": "Bandage Wrap",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "bandagedUp"
+                }
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "88",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "name": "Incident Report Copy",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "87",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ComfortShoes",
+                "name": "Comfort Shoes",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "90",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "87",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "89",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ConfidentialPagerNumber",
+                "name": "Confidential Pager Number",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "91",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "88",
+      "text": "A quiet connection lingers longer than it should. The hospital keeps moving anyway.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Trade a sharp joke to cut the tension.",
+          "to": "90",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ICUAccessBadge",
+                "name": "ICU Access Badge",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask Alex what\u2019s bothering him.",
+          "to": "91",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Refocus Alex on the task at hand.",
+          "to": "90",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "89",
+      "text": "The nurses\u2019 station is a calm eye in the storm. Screens glow. Decisions queue.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "90",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "AlexKeyring",
+                "name": "Alex Keyring",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "93",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "90",
+      "text": "The emergency department hums with overlapping urgency. Fluorescent light flattens time, and the smell of antiseptic clings to everything.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "92",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "CoffeeToken",
+                "name": "Coffee Token",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "93",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ThankYouPin",
+                "name": "Thank You Pin",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "91",
+      "text": "A hallway offers a breath between alarms. Shoes squeak. A cart rattles past.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "92",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ICUAccessBadge",
+                "name": "ICU Access Badge",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "95",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "96",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "92",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "94",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "Penlight",
+                "name": "Penlight",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "95",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "93",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "95",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ConfidentialPagerNumber",
+                "name": "Confidential Pager Number",
+                "qty": 1,
+                "value": 0
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Go in with empty hands and improvise.",
+          "to": "97",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "94",
+      "text": "An ICU door closes with authority. Access matters here.\n\nPeople watch without making it obvious.",
+      "choices": [
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "96",
+          "effects": [
+            {
+              "addItem": {
+                "category": "special",
+                "id": "ResearchPager",
+                "name": "Research Pager",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "special"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Ask for a witness statement.",
+          "to": "97",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "95",
+      "text": "An ICU door closes with authority. Access matters here.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "98",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "StandardStethoscope",
+                "name": "Standard Stethoscope",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "97",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "SalineFlush",
+                "name": "Saline Flush",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "story",
+                  "tag": "lineClear"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "96",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nSmall decisions feel larger under fluorescent light.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "99",
+          "effects": [
+            {
+              "addItem": {
+                "category": "consumables",
+                "id": "EnergyGel",
+                "name": "Energy Gel",
+                "qty": 1,
+                "value": 0,
+                "use": {
+                  "type": "heal",
+                  "amount": 1
+                }
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "97",
+      "text": "Pressure builds\u2014not just clinical, but social. Who saw what. Who will remember.\n\nYou feel the weight of choice settle in.",
+      "choices": [
+        {
+          "label": "Offer help before being asked.",
+          "to": "100",
+          "effects": [
+            {
+              "addItem": {
+                "category": "weapons",
+                "id": "TraumaShears",
+                "name": "Trauma Shears",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "weapon"
+              }
+            },
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Show steadiness under pressure.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "98",
+      "text": "The break room is dim and forgiving. Coffee steams. Silence dares you to sit.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "100",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ComfortShoes",
+                "name": "Comfort Shoes",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Keep it professional for now.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Grab what you need from the cart first.",
+          "to": "100",
+          "requires": {
+            "hasItem": {
+              "category": "special",
+              "id": "ICUAccessBadge"
+            }
+          },
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "99",
+      "text": "Paperwork accumulates weight. Details decide what stories get told later.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Move fast and trust your training.",
+          "to": "100",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "N95Mask",
+                "name": "N95 Mask",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": -1
+            }
+          ]
+        },
+        {
+          "label": "Follow protocol step by step.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Pause long enough to reassess.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "100",
+      "text": "Triage is tense. Voices sharpen, then soften. Fear and impatience trade places in the waiting room.\n\nThe moment asks for judgment more than speed.",
+      "choices": [
+        {
+          "label": "Meet Marlowe\u2019s gaze and keep your voice calm.",
+          "to": "100",
+          "effects": [
+            {
+              "addItem": {
+                "category": "armor",
+                "id": "ComfortShoes",
+                "name": "Comfort Shoes",
+                "qty": 1,
+                "value": 0,
+                "equipSlot": "armor"
+              }
+            },
+            {
+              "hp": 0
+            }
+          ]
+        },
+        {
+          "label": "Document the details while they\u2019re fresh.",
+          "to": "100",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "ICUFlowers",
+                "name": "ICU Flowers",
+                "qty": 1,
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MALPRACTICE_ARREST",
+      "text": "Security is polite. The word \u2018malpractice\u2019 lands heavier than the cuffs. The hospital remembers what it needs to.",
+      "choices": [
+        {
+          "label": "Return to Main Menu",
+          "toMenu": true
+        }
+      ]
+    },
+    {
+      "id": "PROMOTION_TRANSFER",
+      "text": "A promotion comes with a transfer. New halls. New expectations. Familiar faces fade as doors close behind you.",
+      "choices": [
+        {
+          "label": "Return to Main Menu",
+          "toMenu": true
+        }
+      ]
+    }
+  ]
+}
