@@ -1,0 +1,1599 @@
+{
+  "title": "Code Blue",
+  "start": "1",
+  "module": {
+    "slotLabels": {
+      "weapon": "Tool",
+      "armor": "Scrubs",
+      "special": "Access Item"
+    },
+    "primaryResource": {
+      "name": "Reputation",
+      "min": -5,
+      "max": 5,
+      "failureSectionId": "MALPRACTICE_ARREST"
+    },
+    "loadout": {
+      "weapon": {
+        "id": "StandardStethoscope",
+        "name": "Standard Stethoscope",
+        "category": "weapons"
+      },
+      "armor": {
+        "id": "NewScrubs",
+        "name": "New Scrubs",
+        "category": "armor"
+      },
+      "special": {
+        "id": "PocketReferenceGuide",
+        "name": "Pocket Reference Guide",
+        "category": "special"
+      }
+    },
+    "itemSet": {
+      "defined": true
+    }
+  },
+  "sections": [
+    {
+      "id": "1",
+      "text": "Section 1: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "2"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "text": "Section 2: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "3"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "text": "Section 3: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "4"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "text": "Section 4: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "5"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "text": "Section 5: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "6",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "7",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "text": "Section 6: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "7"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "text": "Section 7: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "8",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "8",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "text": "Section 8: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "9"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "text": "Section 9: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "10"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "text": "Section 10: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "11",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "12",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "text": "Section 11: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "12"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "text": "Section 12: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "13"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "text": "Section 13: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "14"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "text": "Section 14: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "15",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "15",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "text": "Section 15: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "16",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "17",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "text": "Section 16: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "17"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "text": "Section 17: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "18"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "text": "Section 18: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "19"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "text": "Section 19: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "20"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "text": "Section 20: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "21",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "22",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "text": "Section 21: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "22",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "22",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "text": "Section 22: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "23"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "text": "Section 23: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "24"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "text": "Section 24: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "25"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "text": "Section 25: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "26",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "27",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "text": "Section 26: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "27"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "text": "Section 27: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "28"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "text": "Section 28: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "29",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "29",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "text": "Section 29: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "30"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "text": "Section 30: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "31",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "32",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "text": "Section 31: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "32"
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "text": "Section 32: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "33"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "text": "Section 33: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "34"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "text": "Section 34: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "35"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "text": "Section 35: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "36",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "37",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "text": "Section 36: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "37"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "text": "Section 37: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "38"
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "text": "Section 38: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "39"
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "text": "Section 39: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "40"
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "text": "Section 40: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "41",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "42",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "text": "Section 41: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "42"
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "text": "Section 42: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "43",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "43",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "text": "Section 43: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "44"
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "text": "Section 44: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "45"
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "text": "Section 45: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "46",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "47",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "text": "Section 46: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "47"
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "text": "Section 47: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "48"
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "text": "Section 48: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "49"
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "text": "Section 49: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "50",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "50",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "text": "Section 50: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "51",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "52",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "text": "Section 51: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "52"
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "text": "Section 52: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "53"
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "text": "Section 53: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "54"
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "text": "Section 54: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "55"
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "text": "Section 55: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "56",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "57",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "text": "Section 56: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "57",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "57",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "text": "Section 57: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "58"
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "text": "Section 58: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "59"
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "text": "Section 59: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "60"
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "text": "Section 60: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "61",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "62",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "text": "Section 61: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "62"
+        }
+      ]
+    },
+    {
+      "id": "62",
+      "text": "Section 62: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "63"
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "text": "Section 63: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "64",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "64",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "text": "Section 64: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "65"
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "text": "Section 65: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "66",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "67",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "66",
+      "text": "Section 66: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "67"
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "text": "Section 67: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "68"
+        }
+      ]
+    },
+    {
+      "id": "68",
+      "text": "Section 68: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "69"
+        }
+      ]
+    },
+    {
+      "id": "69",
+      "text": "Section 69: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "70"
+        }
+      ]
+    },
+    {
+      "id": "70",
+      "text": "Section 70: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "71",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "72",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "71",
+      "text": "Section 71: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "72"
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "text": "Section 72: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "73"
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "text": "Section 73: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "74"
+        }
+      ]
+    },
+    {
+      "id": "74",
+      "text": "Section 74: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "75"
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "text": "Section 75: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "76",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "77",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "76",
+      "text": "Section 76: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "77"
+        }
+      ]
+    },
+    {
+      "id": "77",
+      "text": "Section 77: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "78",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "78",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "78",
+      "text": "Section 78: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "79"
+        }
+      ]
+    },
+    {
+      "id": "79",
+      "text": "Section 79: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "80"
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "text": "Section 80: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "81",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "82",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "81",
+      "text": "Section 81: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "82"
+        }
+      ]
+    },
+    {
+      "id": "82",
+      "text": "Section 82: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "83"
+        }
+      ]
+    },
+    {
+      "id": "83",
+      "text": "Section 83: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "84"
+        }
+      ]
+    },
+    {
+      "id": "84",
+      "text": "Section 84: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "85",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "85",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "85",
+      "text": "Section 85: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "86",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "87",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "text": "Section 86: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "87"
+        }
+      ]
+    },
+    {
+      "id": "87",
+      "text": "Section 87: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "88"
+        }
+      ]
+    },
+    {
+      "id": "88",
+      "text": "Section 88: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "89"
+        }
+      ]
+    },
+    {
+      "id": "89",
+      "text": "Section 89: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "90"
+        }
+      ]
+    },
+    {
+      "id": "90",
+      "text": "Section 90: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "91",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "92",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "91",
+      "text": "Section 91: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "92",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "92",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "92",
+      "text": "Section 92: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "93"
+        }
+      ]
+    },
+    {
+      "id": "93",
+      "text": "Section 93: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "94"
+        }
+      ]
+    },
+    {
+      "id": "94",
+      "text": "Section 94: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "95"
+        }
+      ]
+    },
+    {
+      "id": "95",
+      "text": "Section 95: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "96",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "97",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "96",
+      "text": "Section 96: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "97"
+        }
+      ]
+    },
+    {
+      "id": "97",
+      "text": "Section 97: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "98"
+        }
+      ]
+    },
+    {
+      "id": "98",
+      "text": "Section 98: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Use a specialized tool to assist.",
+          "to": "99",
+          "requires": {
+            "hasItem": {
+              "category": "weapons",
+              "id": "Penlight"
+            }
+          }
+        },
+        {
+          "label": "Proceed without extra equipment.",
+          "to": "99",
+          "effects": [
+            {
+              "hp": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "99",
+      "text": "Section 99: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Continue through the shift.",
+          "to": "100"
+        }
+      ]
+    },
+    {
+      "id": "100",
+      "text": "Section 100: The hospital never truly sleeps. At this hour, the ER hums with layered tension\u2014machines whispering vitals, staff exchanging looks that carry whole conversations. You feel the weight of your decisions accumulating, shaping how others see you and what doors may open or close.",
+      "choices": [
+        {
+          "label": "Take initiative and handle the situation personally.",
+          "to": "100",
+          "effects": [
+            {
+              "hp": 1
+            }
+          ]
+        },
+        {
+          "label": "Rely on protocol and documentation.",
+          "to": "100",
+          "effects": [
+            {
+              "addItem": {
+                "category": "items",
+                "id": "IncidentReportCopy",
+                "qty": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MALPRACTICE_ARREST",
+      "text": "Security escorts you away as the word 'malpractice' echoes in the corridor. The hospital that once relied on you now closes ranks.",
+      "choices": [
+        {
+          "label": "Return To Main Menu",
+          "toMenu": true
+        }
+      ]
+    },
+    {
+      "id": "PROMOTION_TRANSFER",
+      "text": "Your reputation precedes you. A new hospital awaits, a promotion secured\u2014but familiar faces are left behind, their absence louder than applause.",
+      "choices": [
+        {
+          "label": "Return To Main Menu",
+          "toMenu": true
+        }
+      ]
+    }
+  ]
+}
