@@ -1,13 +1,7 @@
 /* ============================================================
    VerseCraft Stable UI Shell (Full file replacement)
-   - Fix: DEFAULT_PLAYER is module-agnostic (no story items baked in)
-   - Add: module.loadout auto-seeds inventory + equips on NEW RUN start
-   - Add: module.primaryResource drives bar label + range + failure routing
-   - Add: module.currency drives money label/symbol + startingMoney
-   - Fix: Equipped gear is hidden from Inventory list (shows only when unequipped)
-   - Add: Per-story 3 Save Slots (Slot 1–3) + Continue loads last-used slot
-   - Add: Safe Unequip buttons on Character screen loadout rows
-   - Keep: swipe/tap guard so scroll gestures don’t trigger choices
+   + Add: Web background media wiring (GitHub raw) with Node/Act fallback
+   - Space-canon supported: "Act 01", "Node 0101" => URL-encoded automatically
    ============================================================ */
 
 const LS = {
@@ -28,6 +22,121 @@ function escapeHtml(str){
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
+}
+
+/* ============================================================
+   ✅ MEDIA WIRING (BACKGROUND)
+   - This sets #vc-bg background-image based on current story position
+   - Tries: Node override → Act default
+   - Tries extensions in order: webp → png → jpg → jpeg
+   ============================================================ */
+const MEDIA_BASE =
+  "https://raw.githubusercontent.com/soundlogicstudios/VerseCraft-Media/main/Media/";
+
+function encPath(s){
+  // Space-canon needs URL encoding
+  return s.replaceAll(" ", "%20");
+}
+
+function nodeFolderFromId(nodeId){
+  const n = String(nodeId).padStart(4, "0");
+  return `Node ${n}`; // space canon
+}
+
+// Act name can be stored in module later; for now default to Act 01
+function getActIdForStory(story){
+  const act = story?.module?.actId;
+  return safeTitleCaseName(act || "Act 01");
+}
+
+// Best-effort: treat numeric section ids as node ids (101 => Node 0101).
+// If section ids are not numeric (e.g., START), returns null.
+function nodeIdFromSectionId(sectionId){
+  const s = String(sectionId || "").trim();
+  if(!s) return null;
+  // grab digits anywhere (e.g., "0101", "101", "S101" -> 101)
+  const digits = s.match(/\d+/)?.[0] || "";
+  if(!digits) return null;
+  const n = parseInt(digits, 10);
+  if(!Number.isFinite(n)) return null;
+  return n;
+}
+
+function buildNodeBgUrls({ storyId, actId, nodeId }){
+  const nodeFolder = nodeFolderFromId(nodeId);
+  const exts = ["webp","png","jpg","jpeg"];
+  return exts.map(ext => encPath(
+    MEDIA_BASE +
+      `Stories/${storyId}/Acts/${actId}/Nodes/${nodeFolder}/Scenes/Background.${ext}`
+  ));
+}
+
+function buildActDefaultBgUrls({ storyId, actId }){
+  const exts = ["webp","png","jpg","jpeg"];
+  return exts.map(ext => encPath(
+    MEDIA_BASE +
+      `Stories/${storyId}/Acts/${actId}/Defaults/Scenes/Background.${ext}`
+  ));
+}
+
+// Preload-first success wins (avoids needing HEAD requests)
+function pickFirstLoadableUrl(urls){
+  return new Promise((resolve) => {
+    let i = 0;
+    const img = new Image();
+
+    const tryNext = () => {
+      if(i >= urls.length) return resolve(null);
+      const url = urls[i++];
+      img.onload = () => resolve(url);
+      img.onerror = () => tryNext();
+      img.src = url;
+    };
+
+    tryNext();
+  });
+}
+
+let LAST_BG_KEY = "";
+
+async function updateBackgroundForState(){
+  try{
+    const el = document.getElementById("vc-bg");
+    if(!el) return;
+
+    if(state.mode !== "game" || !state.storyId || !state.story){
+      // optional: clear background when not in game
+      el.style.backgroundImage = "";
+      LAST_BG_KEY = "";
+      return;
+    }
+
+    const storyId = state.storyId;
+    const actId = getActIdForStory(state.story);
+    const nodeId = nodeIdFromSectionId(state.sectionId);
+
+    // If we can't infer node, use Act defaults only
+    const key = `${storyId}::${actId}::${nodeId ?? "NO_NODE"}`;
+    if(key === LAST_BG_KEY) return;
+
+    let urls = [];
+    if(nodeId !== null){
+      urls = urls.concat(buildNodeBgUrls({ storyId, actId, nodeId }));
+    }
+    urls = urls.concat(buildActDefaultBgUrls({ storyId, actId }));
+
+    const picked = await pickFirstLoadableUrl(urls);
+    if(picked){
+      el.style.backgroundImage = `url("${picked}")`;
+      LAST_BG_KEY = key;
+    }else{
+      // Nothing found; keep a dark fallback
+      el.style.backgroundImage = "";
+      LAST_BG_KEY = key;
+    }
+  }catch{
+    // fail silent (never crash UI)
+  }
 }
 
 /* ============================================================
@@ -68,9 +177,6 @@ function slotSummary(storyId, slot){
 
 /* ============================================================
    ✅ Module-agnostic default player
-   - No story-specific items or equips live here anymore.
-   - NEW RUN seeding comes from story.module.loadout (if present).
-   - Primary resource stored in player.hp (legacy key), but supports min/max.
    ============================================================ */
 const DEFAULT_PLAYER = () => ({
   hp: { cur: 15, min: 0, max: 15 }, // legacy key "hp" but module may label it Reputation, etc.
@@ -159,8 +265,6 @@ function getCurrency(story){
 
 /* ============================================================
    ✅ NEW RUN seeding from module.loadout
-   - Also seeds primary resource min/max and starting value.
-   - Seeds money from module.startingMoney (if present).
    ============================================================ */
 function seedPlayerForStory(story){
   const p = DEFAULT_PLAYER();
@@ -170,9 +274,6 @@ function seedPlayerForStory(story){
   p.hp.min = pr.min;
   p.hp.max = pr.max;
 
-  // Start value:
-  // - If resource can go negative (e.g., Reputation -5..5), start at 0 (clamped).
-  // - Else (e.g., HP 0..15), start at max.
   const startVal = (pr.min < 0) ? 0 : pr.max;
   p.hp.cur = clamp(startVal, pr.min, pr.max);
 
@@ -198,7 +299,6 @@ function seedPlayerForStory(story){
       const itemId = String(spec.id);
       const itemName = safeTitleCaseName(spec.name || spec.id);
 
-      // Add to inventory
       p.inv[cat].push({
         id: itemId,
         name: itemName,
@@ -207,7 +307,6 @@ function seedPlayerForStory(story){
         equipSlot: slot,
       });
 
-      // Equip by id
       p.equip[slot] = itemId;
     }
   }
@@ -216,11 +315,11 @@ function seedPlayerForStory(story){
 }
 
 /* ============================================================
-   Start story as a NEW RUN (always seeds from module.loadout)
+   Start story as a NEW RUN
    ============================================================ */
 async function startNewRun(storyId){
   await loadStoryById(storyId);
-  ensureFailureSection(); // inject module failure section if missing
+  ensureFailureSection();
   state.player = seedPlayerForStory(state.story);
   state.mode = "game";
   state.ui.modal = null;
@@ -228,7 +327,7 @@ async function startNewRun(storyId){
 }
 
 /* ============================================================
-   Save / Load (Per-story 3 slots)
+   Save / Load
    ============================================================ */
 function saveGame(slot = 1){
   if(!state.storyId){
@@ -248,11 +347,6 @@ function saveGame(slot = 1){
   toastDialog("Saved", `Saved to Slot ${s} for this story.`);
 }
 
-/* ============================================================
-   Load game:
-   - Home "Continue Story": loads LAST_SAVE story+slot (across stories)
-   - In-game "Load": requires same storyId (strict match), picks slot 1–3
-   ============================================================ */
 async function loadGameAsync({ strictStoryMatch, storyId, slot } = { strictStoryMatch: false }){
   const last = getLastSave();
   const sid = storyId || last?.storyId;
@@ -300,10 +394,8 @@ async function loadGameAsync({ strictStoryMatch, storyId, slot } = { strictStory
   await loadStoryById(data.storyId);
   ensureFailureSection();
 
-  // If save has player, use it; otherwise seed
   state.player = data.player || seedPlayerForStory(state.story);
 
-  // Patch older saves that don’t have min/max / money
   const pr = getPrimaryResource(state.story);
   if(state.player?.hp){
     if(typeof state.player.hp.min !== "number") state.player.hp.min = pr.min;
@@ -392,7 +484,6 @@ function removeItem(spec){
   it.qty = clamp((it.qty || 0) - q, 0, 9999);
   if(it.qty === 0) list.splice(list.indexOf(it), 1);
 
-  // If we removed an equipped item, unequip it
   if(state.player.equip.weapon === spec.id) state.player.equip.weapon = null;
   if(state.player.equip.armor === spec.id) state.player.equip.armor = null;
   if(state.player.equip.special === spec.id) state.player.equip.special = null;
@@ -452,7 +543,7 @@ function onChoose(choice){
 }
 
 /* ============================================================
-   Ensure module failure section exists (inject if missing)
+   Ensure module failure section exists
    ============================================================ */
 function ensureFailureSection(){
   const s = state.story;
@@ -550,6 +641,9 @@ function render(){
   if(state.mode === "home") root.innerHTML = renderHome();
   else if(state.mode === "game") root.innerHTML = renderGame();
   else root.innerHTML = renderBoot();
+
+  // Update background after UI renders (safe even if it fails)
+  updateBackgroundForState();
 }
 
 function renderBoot(){
@@ -622,9 +716,6 @@ function renderGame(){
 
   const xpPct = state.player.xp.max > 0 ? (state.player.xp.cur / state.player.xp.max) * 100 : 0;
 
-  // Display value string:
-  // If min < 0 (Reputation), show just the current value.
-  // Else show cur / max (HP style).
   const resourceVal = (min < 0)
     ? `${cur}`
     : `${cur} / ${max}`;
@@ -670,8 +761,8 @@ function renderGame(){
 
         <div class="vc-content">
           <div class="vc-scene">
-            <div class="vc-sceneTitle">Image Placeholder</div>
-            <div class="vc-sceneSub">Future: scene image or video</div>
+            <div class="vc-sceneTitle">Background</div>
+            <div class="vc-sceneSub">Now auto-loads from VerseCraft-Media (Node → Act fallback)</div>
           </div>
 
           <div class="vc-storyText">
@@ -905,7 +996,6 @@ function isEquippedId(id){
 function renderInvTab(cat){
   let list = getInvList(cat);
 
-  // ✅ Hide equipped gear from inventory display
   if(cat === "weapons" || cat === "armor" || cat === "special"){
     list = list.filter(it => !isEquippedId(it.id));
   }
@@ -939,7 +1029,7 @@ function renderInvTab(cat){
 }
 
 /* ============================================================
-   ✅ Swipe/Tap Guard (prevents “scroll triggers choice”)
+   ✅ Swipe/Tap Guard
    ============================================================ */
 const TAP = {
   startX: 0,
@@ -965,22 +1055,14 @@ document.addEventListener("pointermove", (e) => {
   }
 }, { passive: true });
 
-document.addEventListener("pointerup", () => {
-  TAP.active = false;
-}, { passive: true });
-
-document.addEventListener("pointercancel", () => {
-  TAP.active = false;
-}, { passive: true });
+document.addEventListener("pointerup", () => { TAP.active = false; }, { passive: true });
+document.addEventListener("pointercancel", () => { TAP.active = false; }, { passive: true });
 
 /* ============================================================
-   Global click handler (event delegation)
-   - Guarded: ignore clicks if the gesture was a scroll.
+   Global click handler
    ============================================================ */
 document.addEventListener("click", async (e) => {
-  if(TAP.moved){
-    return;
-  }
+  if(TAP.moved) return;
 
   const t = e.target;
 
