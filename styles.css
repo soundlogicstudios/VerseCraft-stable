@@ -6,7 +6,16 @@
    - Home logo clamp (container + image) to prevent blowout
    - Keeps minimize behavior: hides ONLY menu buttons (not bars)
    ============================================================ */
-
+/* VerseCraft background layer */
+#vc-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000; /* fallback while loading */
+}
 :root{
   --bg0:#061320;
   --bg1:#0b2237;
